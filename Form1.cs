@@ -70,7 +70,7 @@ namespace ExportApp
                 //3.通过行框架创建并赋值
                 dt.Rows.Add("张三", DateTime.Now);//Add里面参数的数据顺序要和dt中的列的顺序对应 
                                                 //4.通过复制dt2表的某一行来创建
-                dt.Rows.Add(dt2.Rows[i].ItemArray);
+                //dt.Rows.Add(dt2.Rows[i].ItemArray);
             }
         }
         /// <summary>
