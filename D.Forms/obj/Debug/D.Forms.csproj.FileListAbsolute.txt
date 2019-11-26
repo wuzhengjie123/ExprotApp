@@ -1,0 +1,92 @@
+F:\C#\D.Forms\bin\Debug\D.Forms.dll
+F:\C#\D.Forms\bin\Debug\D.Forms.pdb
+F:\C#\D.Forms\obj\Debug\D.Forms.MDateTimePicker.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.Controls.MDocking.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.Controls.MPathChoice.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.Controls.MFileChoice.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MGroupBox.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MBanner.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MessageBoxForm.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MPictureBox.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MTextBox.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MPagedControl.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MSideBar.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.MSideBarMenu.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.DShadowForm.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.FrmHtmlTableColumnEditor.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.FrmCaptionControlButtonEditor.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.FrmUITypeEditor.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.Properties.Resources.resources
+F:\C#\D.Forms\obj\Debug\D.Forms.csproj.GenerateResource.cache
+F:\C#\D.Forms\obj\Debug\D.Forms.csproj.CoreCompileInputs.cache
+F:\C#\D.Forms\obj\Debug\D.Forms.dll
+F:\C#\D.Forms\obj\Debug\D.Forms.pdb
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\bin\Debug\D.Forms.dll
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\bin\Debug\D.Forms.pdb
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MDateTimePicker.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.Controls.MDocking.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.Controls.MPathChoice.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.Controls.MFileChoice.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MGroupBox.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MBanner.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MessageBoxForm.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MPictureBox.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MTextBox.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MPagedControl.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MSideBar.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.MSideBarMenu.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.DShadowForm.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.FrmHtmlTableColumnEditor.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.FrmCaptionControlButtonEditor.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.FrmUITypeEditor.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.Properties.Resources.resources
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.csproj.GenerateResource.cache
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.csproj.CoreCompileInputs.cache
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.dll
+F:\Visual Studio 2008\Projects\SEN-MES\D.Forms\obj\Debug\D.Forms.pdb
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\bin\Debug\D.Forms.dll
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\bin\Debug\D.Forms.pdb
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.csprojAssemblyReference.cache
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MDateTimePicker.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Controls.MDocking.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Controls.MPathChoice.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Controls.MFileChoice.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MGroupBox.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MBanner.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MessageBoxForm.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MPictureBox.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MTextBox.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MPagedControl.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MSideBar.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MSideBarMenu.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.DShadowForm.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.FrmHtmlTableColumnEditor.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.FrmCaptionControlButtonEditor.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.FrmUITypeEditor.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Properties.Resources.resources
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.csproj.GenerateResource.cache
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.csproj.CoreCompileInputs.cache
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.dll
+F:\Workspaces\serialPort\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.pdb
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\bin\Debug\D.Forms.dll
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\bin\Debug\D.Forms.pdb
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MDateTimePicker.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Controls.MDocking.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Controls.MPathChoice.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Controls.MFileChoice.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MGroupBox.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MBanner.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MessageBoxForm.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MPictureBox.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MTextBox.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MPagedControl.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MSideBar.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.MSideBarMenu.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.DShadowForm.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.FrmHtmlTableColumnEditor.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.FrmCaptionControlButtonEditor.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.FrmUITypeEditor.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.Properties.Resources.resources
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.csproj.GenerateResource.cache
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.dll
+E:\workSpace\dibang\dibang\client\SerialPortW-master\D.Forms\obj\Debug\D.Forms.pdb
