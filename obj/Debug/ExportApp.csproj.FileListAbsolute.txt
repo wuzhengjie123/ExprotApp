@@ -1,6 +1,5 @@
 E:\workSpace\ExportApp\bin\Debug\ExportApp.exe
 E:\workSpace\ExportApp\bin\Debug\ExportApp.pdb
-E:\workSpace\ExportApp\obj\Debug\ExportApp.csprojAssemblyReference.cache
 E:\workSpace\ExportApp\obj\Debug\ExportApp.Form1.resources
 E:\workSpace\ExportApp\obj\Debug\ExportApp.Properties.Resources.resources
 E:\workSpace\ExportApp\obj\Debug\ExportApp.csproj.GenerateResource.cache
@@ -13,3 +12,4 @@ E:\workSpace\ExportApp\bin\Debug\Interop.Microsoft.Office.Core.dll
 E:\workSpace\ExportApp\bin\Debug\Interop.Office.dll
 E:\workSpace\ExportApp\obj\Debug\ExportApp.csproj.ResolveComReference.cache
 E:\workSpace\ExportApp\obj\Debug\ExportApp.csproj.CopyComplete
+E:\workSpace\ExportApp\obj\Debug\ExportApp.csprojAssemblyReference.cache

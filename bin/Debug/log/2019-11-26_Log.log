@@ -1,0 +1,56 @@
+当前时间：2019/11/26 16:59:37
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 332
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:00:49
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 332
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:01:42
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 332
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:02:10
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 332
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:06:02
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 332
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:06:09
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 332
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:10:53
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 333
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+

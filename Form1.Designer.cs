@@ -28,33 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.dataSet1 = new System.Data.DataSet();
             this.dataTable1 = new System.Data.DataTable();
             this.dataTable2 = new System.Data.DataTable();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(143, 305);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(304, 293);
+            this.button2.Location = new System.Drawing.Point(250, 111);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(209, 53);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -62,9 +50,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(44, 29);
+            this.richTextBox1.Location = new System.Drawing.Point(-3, 245);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(518, 240);
+            this.richTextBox1.Size = new System.Drawing.Size(686, 209);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -83,24 +71,13 @@
             // 
             this.dataTable2.TableName = "Table2";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(443, 293);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 363);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(681, 454);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "我的程序";
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
@@ -111,14 +88,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Data.DataSet dataSet1;
         private System.Data.DataTable dataTable1;
         private System.Data.DataTable dataTable2;
-        private System.Windows.Forms.Button button3;
     }
 }
 
