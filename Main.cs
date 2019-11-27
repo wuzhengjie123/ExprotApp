@@ -25,14 +25,17 @@ namespace ExportApp
         private string strTempPath = "";
         private string fileName = "导出";
         private Boolean success = false;
-        private Int64 index = 1;
+        private Int64 index = 5;
         private Int64 number = 1;
         private Price priceForm = new Price();
         public Main()
         {
-            InitializeComponent();
-            priceForm.initComboBox();
-
+            InitializeComponent();           
+            string cd = System.Environment.CurrentDirectory;
+            string pd = Directory.GetParent(Directory.GetParent(cd).FullName).FullName;
+            pd += "\\export.db";
+            SQLiteHelper.SetConnectionString(pd, null, 3);
+            Price.priceForm.selectDate();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -66,6 +69,10 @@ namespace ExportApp
                     MatchCollection zw = Regex.Matches(name, @"\D+");
                     String[] arr = name.Split(' ');
                     dr["remark"] = name;
+                    if (arr.Length < 4) {
+                        MessageBox.Show("文件【"+name+"】格式不对！格式为【备注 尺寸-尺寸 材料 数量】");
+                        return;
+                    }
                     for (Int64 i = 0; i < arr.Length; i++) {
 
                         String size = arr[1];
@@ -80,18 +87,17 @@ namespace ExportApp
                             dr["width"] = width;
                             dr["size"] = length * width;
                         }
-                        dr["goods"] = arr[2];
-                        if (priceForm.map.ContainsKey(arr[2]))
-                        {
-                            double goodsPrice = priceForm.map[arr[2]];
-
+                        //读取材料时
+                        if (i == 2) {
+                            dr["goods"] = arr[2];
+                            double goodsPrice = priceForm.getPrice(arr[2]);
+                            if (goodsPrice == 0)
+                            {
+                                richTextBox.AppendText("警告：第【" + index + "】行价格异常！！！材料是：【" + arr[2] + "】" + DateTime.Now.ToString() + "\n");
+                            }
                             dr["price"] = goodsPrice;
                             dr["sum"] = goodsPrice * length * width;
                         }
-                        else {
-                            dr["price"] = "0.00";
-                        }
-
                         MatchCollection sz = Regex.Matches(arr[3], @"\d+");
                         foreach (Match m in sz)
                         {
@@ -103,7 +109,6 @@ namespace ExportApp
 
                     dt.Rows.Add(dr);
 
-                    richTextBox.AppendText(" " + index+":"+ name + "             "+ DateTime.Now.ToString()+ "\n");
                     index++;
 
                 }

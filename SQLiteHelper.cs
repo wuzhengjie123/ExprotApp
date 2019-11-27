@@ -45,7 +45,7 @@ namespace ExportApp
         /// <param name="parameters">执行增删改语句所需要的参数，参数必须以它们在SQL语句中的顺序为准。</param> 
         /// <returns></returns> 
         /// <exception cref="Exception"></exception>
-        public int ExecuteNonQuery(string sql, params SQLiteParameter[] parameters)
+        public static int ExecuteNonQuery(string sql, params SQLiteParameter[] parameters)
         {
             int affectedRows = 0;
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
@@ -108,7 +108,7 @@ namespace ExportApp
         /// <param name="sql">查询语句。</param>
         /// <returns>查询结果。</returns>
         /// <exception cref="Exception"></exception>
-        public object ExecuteScalar(string sql, params SQLiteParameter[] parameters)
+        public static object ExecuteScalar(string sql, params SQLiteParameter[] parameters)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {

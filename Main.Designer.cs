@@ -61,9 +61,10 @@
             this.richTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox.Font = new System.Drawing.Font("新宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.richTextBox.Location = new System.Drawing.Point(-3, 203);
+            this.richTextBox.ForeColor = System.Drawing.Color.Red;
+            this.richTextBox.Location = new System.Drawing.Point(125, 161);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(661, 203);
+            this.richTextBox.Size = new System.Drawing.Size(506, 236);
             this.richTextBox.TabIndex = 2;
             this.richTextBox.Text = "";
             this.richTextBox.TextChanged += new System.EventHandler(this.richTextBox_TextChanged);
@@ -100,6 +101,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             gradientColor1.FromColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             gradientColor1.GradientMode = D.Forms.GradientMode.Vertical;
             gradientColor1.ToColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
@@ -141,7 +143,7 @@
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
             this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 659, 40);
             this.Caption.Size = new System.Drawing.Size(659, 40);
-            this.Caption.Text = "";
+            this.Caption.Text = "蓝图广告";
             this.Caption.Visible = true;
             this.Caption.Width = 659;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
@@ -155,7 +157,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "";
+            this.Text = "蓝图广告";
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();

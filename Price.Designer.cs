@@ -41,9 +41,8 @@
             D.Forms.GradientColor gradientColor2 = new D.Forms.GradientColor();
             D.Forms.GradientColor gradientColor3 = new D.Forms.GradientColor();
             D.Forms.GradientColor gradientColor4 = new D.Forms.GradientColor();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnAdd2 = new System.Windows.Forms.Button();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.mComboBox = new D.Forms.MComboBox();
             this.labPrice = new D.Forms.MLabel();
             this.mLabel1 = new D.Forms.MLabel();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -54,53 +53,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnAdd
+            // btnAdd2
             // 
-            this.btnAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.BackgroundImage")));
-            this.btnAdd.Location = new System.Drawing.Point(143, 296);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(166, 39);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd2.BackgroundImage")));
+            this.btnAdd2.Location = new System.Drawing.Point(214, 273);
+            this.btnAdd2.Name = "btnAdd2";
+            this.btnAdd2.Size = new System.Drawing.Size(166, 39);
+            this.btnAdd2.TabIndex = 1;
+            this.btnAdd2.Text = "添加/更新";
+            this.btnAdd2.UseVisualStyleBackColor = true;
+            this.btnAdd2.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtPrice.Location = new System.Drawing.Point(110, 231);
+            this.txtPrice.Location = new System.Drawing.Point(195, 187);
             this.txtPrice.Multiline = true;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(221, 31);
             this.txtPrice.TabIndex = 26;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // mComboBox
-            // 
-            this.mComboBox.BackColor = System.Drawing.Color.White;
-            this.mComboBox.BorderBottomColor = System.Drawing.Color.Transparent;
-            this.mComboBox.BorderBottomStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.mComboBox.BorderBottomWidth = 0;
-            this.mComboBox.BorderLeftColor = System.Drawing.Color.Transparent;
-            this.mComboBox.BorderLeftStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.mComboBox.BorderLeftWidth = 1;
-            this.mComboBox.BorderRightColor = System.Drawing.Color.Transparent;
-            this.mComboBox.BorderRightStyle = System.Windows.Forms.ButtonBorderStyle.None;
-            this.mComboBox.BorderRightWidth = 1;
-            this.mComboBox.BorderTopColor = System.Drawing.Color.Transparent;
-            this.mComboBox.BorderTopStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.mComboBox.BorderTopWidth = 1;
-            this.mComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mComboBox.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.mComboBox.Location = new System.Drawing.Point(48, 94);
-            this.mComboBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.mComboBox.Name = "mComboBox";
-            this.mComboBox.SelectedIndex = -1;
-            this.mComboBox.SelectedItem = null;
-            this.mComboBox.SelectedText = "";
-            this.mComboBox.Size = new System.Drawing.Size(445, 35);
-            this.mComboBox.TabIndex = 48;
-            this.mComboBox.Title = "";
             // 
             // labPrice
             // 
@@ -116,7 +88,7 @@
             mBorder1.Width = 0;
             this.labPrice.Border = mBorder1;
             this.labPrice.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labPrice.Location = new System.Drawing.Point(29, 235);
+            this.labPrice.Location = new System.Drawing.Point(114, 191);
             this.labPrice.Name = "labPrice";
             this.labPrice.Radius = 0;
             this.labPrice.RadiusMode = D.Forms.RadiusMode.None;
@@ -138,7 +110,7 @@
             mBorder2.Width = 0;
             this.mLabel1.Border = mBorder2;
             this.mLabel1.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.mLabel1.Location = new System.Drawing.Point(29, 172);
+            this.mLabel1.Location = new System.Drawing.Point(114, 128);
             this.mLabel1.Name = "mLabel1";
             this.mLabel1.Radius = 0;
             this.mLabel1.RadiusMode = D.Forms.RadiusMode.None;
@@ -149,7 +121,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtName.Location = new System.Drawing.Point(110, 168);
+            this.txtName.Location = new System.Drawing.Point(195, 124);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(221, 31);
@@ -170,7 +142,7 @@
             mBorder3.Width = 0;
             this.mLabel2.Border = mBorder3;
             this.mLabel2.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.mLabel2.Location = new System.Drawing.Point(324, 61);
+            this.mLabel2.Location = new System.Drawing.Point(650, 14);
             this.mLabel2.Name = "mLabel2";
             this.mLabel2.Radius = 0;
             this.mLabel2.RadiusMode = D.Forms.RadiusMode.None;
@@ -188,7 +160,6 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -214,13 +185,13 @@
             this.dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView.Location = new System.Drawing.Point(530, 61);
+            this.dataGridView.Location = new System.Drawing.Point(513, 43);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(208)))), ((int)(((byte)(214)))));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(56)))), ((int)(((byte)(78)))));
@@ -295,7 +266,7 @@
             this.Caption.Logo = null;
             this.Caption.LogoSize = new System.Drawing.Size(0, 0);
             this.Caption.LogoVisible = true;
-            this.Caption.MaximizeBox = true;
+            this.Caption.MaximizeBox = false;
             this.Caption.MaximizeBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.MaximizeBoxImage")));
             this.Caption.MinimizeBox = true;
             this.Caption.MinimizeBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.MinimizeBoxImage")));
@@ -303,7 +274,7 @@
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
             this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 868, 40);
             this.Caption.Size = new System.Drawing.Size(868, 40);
-            this.Caption.Text = "D Form";
+            this.Caption.Text = "";
             this.Caption.Visible = true;
             this.Caption.Width = 868;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
@@ -315,12 +286,12 @@
             this.Controls.Add(this.mLabel1);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.labPrice);
-            this.Controls.Add(this.mComboBox);
             this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnAdd2);
+            this.MaximizeBox = false;
             this.Name = "Price";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Price";
+            this.Text = "";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -328,14 +299,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnAdd2;
         private System.Windows.Forms.TextBox txtPrice;
-        public D.Forms.MComboBox mComboBox;
         private D.Forms.MLabel labPrice;
         private D.Forms.MLabel mLabel1;
         private System.Windows.Forms.TextBox txtName;
         private D.Forms.MLabel mLabel2;
-        private System.Windows.Forms.DataGridView dataGridView;
+        public System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn _weight;
         private System.Windows.Forms.DataGridViewTextBoxColumn _plateNumber;
     }
