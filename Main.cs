@@ -14,7 +14,7 @@ using D.Forms;
 
 namespace ExportApp
 {
-    public partial class Form1 : MForm
+    public partial class Main : MForm
     {
         private static Microsoft.Office.Interop.Excel.Application app = null;
         private static Microsoft.Office.Interop.Excel.Workbooks workbooks = null;
@@ -25,16 +25,15 @@ namespace ExportApp
         private string strTempPath = "";
         private string fileName = "导出";
         private Boolean success = false;
-        public Form1()
+        private Int64 index = 1;
+        private Int64 number = 1;
+        private Price priceForm = new Price();
+        public Main()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
+            priceForm.initComboBox();
 
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -52,6 +51,8 @@ namespace ExportApp
                 dt.Columns.Add("goods", typeof(string)); //数据类型为 文本
                 dt.Columns.Add("count", typeof(Int64)); //数据类型为 int
                 dt.Columns.Add("size", typeof(double)); //数据类型为 文本
+                dt.Columns.Add("price", typeof(double)); //数据类型为 double
+                dt.Columns.Add("sum", typeof(double)); //数据类型为 double
                 foreach (FileInfo file in folder.GetFiles("*.*"))
                 {
                     // String name = file.Name.IndexOf(".");
@@ -63,37 +64,33 @@ namespace ExportApp
 
                     //提取中文
                     MatchCollection zw = Regex.Matches(name, @"\D+");
-                    /*String remark = "";
-                    foreach (Match m in zw)
-                    {
-                        remark = m.Value;
-                        break;
-                    }*/
-                    //备注
-
-                    //提取数字
-                    /*MatchCollection sz = Regex.Matches(name, @"\d+");
-                    String szStr = "";
-                    foreach (Match m in sz)
-                    {
-                        szStr += m.Value + "";
-
-                    }*/
                     String[] arr = name.Split(' ');
                     dr["remark"] = name;
                     for (Int64 i = 0; i < arr.Length; i++) {
 
                         String size = arr[1];
                         String[] sizeArr = size.Split('-');
+                        double length = 0;
+                        double width = 0;
                         for (Int64 j = 0; j < sizeArr.Length; j++)
                         {
-                            double length = double.Parse(sizeArr[0]) / 100;
-                            double width = double.Parse(sizeArr[1]) / 100;
+                            length = double.Parse(sizeArr[0]) / 100;
+                            width = double.Parse(sizeArr[1]) / 100;
                             dr["length"] = length;
                             dr["width"] = width;
                             dr["size"] = length * width;
                         }
                         dr["goods"] = arr[2];
+                        if (priceForm.map.ContainsKey(arr[2]))
+                        {
+                            double goodsPrice = priceForm.map[arr[2]];
+
+                            dr["price"] = goodsPrice;
+                            dr["sum"] = goodsPrice * length * width;
+                        }
+                        else {
+                            dr["price"] = "0.00";
+                        }
 
                         MatchCollection sz = Regex.Matches(arr[3], @"\d+");
                         foreach (Match m in sz)
@@ -106,7 +103,8 @@ namespace ExportApp
 
                     dt.Rows.Add(dr);
 
-                  //  richTextBox1.AppendText(" " + szStr + "\n");
+                    richTextBox.AppendText(" " + index+":"+ name + "             "+ DateTime.Now.ToString()+ "\n");
+                    index++;
 
                 }
 
@@ -129,121 +127,6 @@ namespace ExportApp
                   ExcelOp(path+"\\export.xls");*/
                 GenerateAttachment(dt);
             }
-        }
-        /// <summary>
-        /// 简单操作Excel文件
-        /// </summary>
-        /// <param name="excelPath">excel 文件路径</param>
-        /// <returns></returns>
-        public void ExcelOp(string excelPath)
-        {
-            string ExcelFilePath = excelPath.Trim();
-            //set columns
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            dic.Add("订单号", "A");//
-            dic.Add("数量", "B");
-
-            Microsoft.Office.Interop.Excel.Application excel = new Excel.Application();
-            Excel.Workbook wb = null;
-            excel.DisplayAlerts = false;
-            excel.Visible = true;//是否打开该Excel文件
-            wb = excel.Workbooks.Open(ExcelFilePath);
-            Excel.Worksheet ws = (Excel.Worksheet)wb.Worksheets[1]; //索引从1开始 //(Excel.Worksheet)wb.Worksheets["SheetName"];
-            int rowCount = 0;//有效行，索引从1开始
-            try
-            {
-                rowCount = ws.UsedRange.Rows.Count;//赋值有效行
-
-                string ordernum = string.Empty;
-                string count = string.Empty;
-                //循环行
-                for (int i = 1; i <= rowCount; i++)//
-                {
-                    if (ws.Rows[i] != null)
-                    {
-                        ordernum = ws.Cells[i, dic["订单号"]].ToString();//取单元格值
-                        count = ws.Cells[i, dic["数量"]].ToString();//ws.Cells[i, 2].Value2.ToString();
-                    }
-                }
-                //循环列
-                for (int i = 1; i <= ws.UsedRange.Columns.Count; i++)
-                {
-                    //ws.Columns[i]
-                }
-            }
-
-            catch (Exception ex) { MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            finally
-            {
-               // ClosePro(excelPath, excel, wb);
-            }
-        }
-        /// <summary>
-        /// 关闭Excel进程
-        /// </summary>
-        /// <param name="excelPath"></param>
-        /// <param name="excel"></param>
-        /// <param name="wb"></param>
-        public void ClosePro(string excelPath, Excel.Application excel, Excel.Workbook wb)
-        {
-            Process[] localByNameApp = Process.GetProcessesByName(excelPath);//获取程序名的所有进程
-            if (localByNameApp.Length > 0)
-            {
-                foreach (var app in localByNameApp)
-                {
-                    if (!app.HasExited)
-                    {
-                        #region
-                        ////设置禁止弹出保存和覆盖的询问提示框   
-                        //excel.DisplayAlerts = false;
-                        //excel.AlertBeforeOverwriting = false;
-
-                        ////保存工作簿   
-                        //excel.Application.Workbooks.Add(true).Save();
-                        ////保存excel文件   
-                        //excel.Save("D:" + "\\test.xls");
-                        ////确保Excel进程关闭   
-                        //excel.Quit();
-                        //excel = null; 
-                        #endregion
-                        app.Kill();//关闭进程  
-                    }
-                }
-            }
-            if (wb != null)
-                wb.Close(true, Type.Missing, Type.Missing);
-            excel.Quit();
-            // 安全回收进程
-            System.GC.GetGeneration(excel);
-        }
-
-        public bool DataSetToExcel(DataSet dataSet, bool isShowExcle)
-        {
-            DataTable dataTable = dataSet.Tables[0];
-            int rowNumber = dataTable.Rows.Count;
-            int columnNumber = dataTable.Columns.Count;
-
-            if (rowNumber == 0)
-            {
-                MessageBox.Show("没有任何数据可以导入到Excel文件！");
-                return false;
-            }
-
-            //建立Excel对象
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            excel.Application.Workbooks.Add(true);
-            excel.Visible = isShowExcle;//是否打开该Excel文件
-
-            //填充数据
-            for (int c = 0; c < rowNumber; c++)
-            {
-                for (int j = 0; j < columnNumber; j++)
-                {
-                    excel.Cells[c + 1, j + 1] = dataTable.Rows[c].ItemArray[j];
-                }
-            }
-
-            return true;
         }
         /// <summary>
         /// 生成附件（使用Microsoft.Office.Interop.Excel组件的方式）
@@ -293,11 +176,13 @@ namespace ExportApp
                     worksheet.Cells[row_, 1] = DT.Rows[dt_row]["date"].ToString();
                     worksheet.Cells[row_, 2] = DT.Rows[dt_row]["remark"].ToString();
                     worksheet.Cells[row_, 3] = DT.Rows[dt_row]["goods"].ToString();
-                    worksheet.Cells[row_, 4] = DT.Rows[dt_row]["length"].ToString();
-                    worksheet.Cells[row_, 5] = DT.Rows[dt_row]["width"].ToString();
-                    worksheet.Cells[row_, 6] = DT.Rows[dt_row]["count"].ToString();
-                    worksheet.Cells[row_, 7] = DT.Rows[dt_row]["size"].ToString();
-                   // progressBar.Value = i;
+                    worksheet.Cells[row_, 4] = DT.Rows[dt_row]["length"];
+                    worksheet.Cells[row_, 5] = DT.Rows[dt_row]["width"];
+                    worksheet.Cells[row_, 6] = DT.Rows[dt_row]["count"];
+                    worksheet.Cells[row_, 7] = DT.Rows[dt_row]["size"];
+                    worksheet.Cells[row_, 8] = DT.Rows[dt_row]["price"];
+                    worksheet.Cells[row_, 9] = DT.Rows[dt_row]["sum"];
+                    // progressBar.Value = i;
                     //水平样式
                     /*worksheet.Range[worksheet.Cells[row_, 1], worksheet.Cells[row_, 1]].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
                     worksheet.Range[worksheet.Cells[row_, 2], worksheet.Cells[row_, 2]].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
@@ -329,11 +214,35 @@ namespace ExportApp
                 System.DateTime currentTime = new System.DateTime();
                 currentTime = System.DateTime.Now;
                 fileName = DateTime.Now.ToString("yyyy-MM-dd");
-                savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + "蓝图广告清单"+fileName + ".xls";
-               // string savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + currentTime + ".xls"; 
-                workbook.SaveAs(savePath, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);
+                //判断文件的存在
+                savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + "蓝图广告清单" + fileName ;
+                Boolean exist = false;
+                exist = System.IO.File.Exists(savePath + ".xls");
+                do
+                {
+                    String numberStr = "(" + number.ToString() + ")";
+                    if (savePath.Contains("("))
+                    {
+                        savePath = savePath.Substring(0, savePath.IndexOf("(")) + numberStr;
+                    }
+                    else {
+                        savePath = savePath + numberStr;
+                    }
+
+                    exist = System.IO.File.Exists(savePath + ".xls");
+                    number++;
+                } while (exist);
+                savePath = savePath + ".xls";
+                if (!string.IsNullOrEmpty(savePath))
+                {
+                    workbook.SaveAs(savePath, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);
+                    success = true;
+
+                }
+               //  string savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + currentTime + ".xls"; 
+
                 // MessageBox.Show("导出成功", "提示");
-                success = true;
+
             }
             catch (Exception ex)
             {
@@ -411,6 +320,18 @@ namespace ExportApp
             fs.WriteLine("触发方法：" + ex.TargetSite);
             fs.WriteLine();
             fs.Close();
+        }
+        private void richTextBox_TextChanged(object sender, EventArgs e)
+        {
+            //将光标位置设置到当前内容的末尾
+            richTextBox.SelectionStart = richTextBox.Text.Length;
+            //滚动到光标位置
+            richTextBox.ScrollToCaret();
+        }
+        //设置按钮
+        private void buttonSet_Click(object sender, EventArgs e)
+        {
+            priceForm.ShowDialog();
         }
     }
 }

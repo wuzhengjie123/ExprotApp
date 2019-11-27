@@ -54,3 +54,86 @@
    在 ExportApp.Form1.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Form1.cs:行号 333
 触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
 
+当前时间：2019/11/26 17:21:09
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 334
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:23:21
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 334
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:26:17
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 334
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 17:29:01
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 334
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 18:19:56
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 346
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 18:27:49
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 346
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 18:36:29
+异常信息：对 COM 组件的调用返回了错误 HRESULT E_FAIL。
+异常对象：Microsoft.Office.Interop.Excel
+调用堆栈：
+在 Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 349
+触发方法：Void SaveAs(System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode, System.Object, System.Object, System.Object, System.Object, System.Object)
+
+当前时间：2019/11/26 18:47:59
+异常信息：长度不能小于 0。
+参数名: length
+异常对象：mscorlib
+调用堆栈：
+在 System.String.InternalSubStringWithChecks(Int32 startIndex, Int32 length, Boolean fAlwaysCopy)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 342
+触发方法：System.String InternalSubStringWithChecks(Int32, Int32, Boolean)
+
+当前时间：2019/11/26 19:00:56
+异常信息：长度不能小于 0。
+参数名: length
+异常对象：mscorlib
+调用堆栈：
+在 System.String.InternalSubStringWithChecks(Int32 startIndex, Int32 length, Boolean fAlwaysCopy)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 341
+触发方法：System.String InternalSubStringWithChecks(Int32, Int32, Boolean)
+
+当前时间：2019/11/26 19:16:54
+异常信息：长度不能小于 0。
+参数名: length
+异常对象：mscorlib
+调用堆栈：
+在 System.String.InternalSubStringWithChecks(Int32 startIndex, Int32 length, Boolean fAlwaysCopy)
+   在 ExportApp.Main.GenerateAttachment(DataTable DT) 位置 E:\workSpace\ExportApp\Main.cs:行号 342
+触发方法：System.String InternalSubStringWithChecks(Int32, Int32, Boolean)
+
