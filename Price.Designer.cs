@@ -57,7 +57,7 @@
             // btnAdd
             // 
             this.btnAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.BackgroundImage")));
-            this.btnAdd.Location = new System.Drawing.Point(121, 297);
+            this.btnAdd.Location = new System.Drawing.Point(143, 296);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(166, 39);
             this.btnAdd.TabIndex = 1;

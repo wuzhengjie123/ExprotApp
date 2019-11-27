@@ -16,3 +16,9 @@ E:\workSpace\ExportApp\bin\Debug\D.Forms.dll
 E:\workSpace\ExportApp\bin\Debug\D.Forms.pdb
 E:\workSpace\ExportApp\obj\Debug\ExportApp.Main.resources
 E:\workSpace\ExportApp\obj\Debug\ExportApp.Price.resources
+E:\workSpace\ExportApp\bin\Debug\ExportApp.exe.config
+E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.dll
+E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.Linq.dll
+E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.xml
+E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.dll.config
+E:\workSpace\ExportApp\obj\Debug\ExportApp.Add.resources

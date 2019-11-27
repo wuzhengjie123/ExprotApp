@@ -76,9 +76,9 @@ namespace ExportApp
             StreamReader sr = new StreamReader(Application.StartupPath + @"\price.txt", Encoding.GetEncoding("gb2312"));
             String name;
             Double price = 0;
-            while (sr.ReadLine() != null)
+            String line;
+            while ((line = sr.ReadLine()) != null)
             {
-                String line = sr.ReadLine();
                 if (line != null && !string.IsNullOrEmpty(line)) {
                     name = line.Substring(0, line.IndexOf("|"));
                     //先求出最后出现这个字符的下标
