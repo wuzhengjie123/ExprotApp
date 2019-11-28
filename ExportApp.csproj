@@ -51,6 +51,15 @@
   <PropertyGroup>
     <ApplicationIcon>bird.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="microsoft.office.interop.excel">
       <HintPath>C:\Users\Administrator\Desktop\mexceldll\mexceldll\14.0.4756.1000\microsoft.office.interop.excel.dll</HintPath>
@@ -109,6 +118,7 @@
     <None Include="app.config" />
     <None Include="export.xls" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
