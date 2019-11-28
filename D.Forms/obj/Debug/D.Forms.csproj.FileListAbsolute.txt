@@ -112,4 +112,3 @@ E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.Properties.Resources.resources
 E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.csproj.GenerateResource.cache
 E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.dll
 E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.pdb
-E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.csprojAssemblyReference.cache
