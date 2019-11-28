@@ -21,7 +21,6 @@ E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.dll
 E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.Linq.dll
 E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.xml
 E:\workSpace\ExportApp\bin\Debug\System.Data.SQLite.dll.config
-E:\workSpace\ExportApp\obj\Debug\ExportApp.Add.resources
 E:\workspace\ExprotApp\bin\Debug\ExportApp.exe.config
 E:\workspace\ExprotApp\bin\Debug\ExportApp.exe
 E:\workspace\ExprotApp\bin\Debug\ExportApp.pdb

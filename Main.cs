@@ -32,9 +32,9 @@ namespace ExportApp
         {
             InitializeComponent();           
             string cd = System.Environment.CurrentDirectory;
-            string pd = Directory.GetParent(Directory.GetParent(cd).FullName).FullName;
-            pd += "\\export.db";
-            SQLiteHelper.SetConnectionString(pd, null, 3);
+            //string pd = Directory.GetParent(Directory.GetParent(cd).FullName).FullName;
+            cd += "\\export.db";
+            SQLiteHelper.SetConnectionString(cd, null, 3);
             Price.priceForm.selectDate();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -70,23 +70,35 @@ namespace ExportApp
                     String[] arr = name.Split(' ');
                     dr["remark"] = name;
                     if (arr.Length < 4) {
-                        MessageBox.Show("文件【"+name+"】格式不对！格式为【备注 尺寸-尺寸 材料 数量】");
+                        MessageBox.Show(this,"文件【"+name+"】格式不对！格式为【备注 尺寸-尺寸 材料 数量】");
                         return;
                     }
                     for (Int64 i = 0; i < arr.Length; i++) {
 
                         String size = arr[1];
-                        String[] sizeArr = size.Split('-');
                         double length = 0;
                         double width = 0;
-                        for (Int64 j = 0; j < sizeArr.Length; j++)
-                        {
-                            length = double.Parse(sizeArr[0]) / 100;
-                            width = double.Parse(sizeArr[1]) / 100;
-                            dr["length"] = length;
-                            dr["width"] = width;
-                            dr["size"] = length * width;
+                        if (i == 1) {
+                            if (size.Contains("-"))
+                            {
+                                String[] sizeArr = size.Split('-');
+                                for (Int64 j = 0; j < sizeArr.Length; j++)
+                                {
+                                    length = double.Parse(sizeArr[0]) / 100;
+                                    width = double.Parse(sizeArr[1]) / 100;
+                                    dr["length"] = length;
+                                    dr["width"] = width;
+                                    dr["size"] = length * width;
+                                }
+                            }
+                            else
+                            {
+                                richTextBox.AppendText("（错误）：备注【" + name + "】尺寸格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                continue;
+                            }
                         }
+
+
                         //读取材料时
                         if (i == 2) {
                             dr["goods"] = arr[2];
@@ -98,12 +110,24 @@ namespace ExportApp
                             dr["price"] = goodsPrice;
                             dr["sum"] = goodsPrice * length * width;
                         }
-                        MatchCollection sz = Regex.Matches(arr[3], @"\d+");
-                        foreach (Match m in sz)
-                        {
-                            dr["count"] = m.Value;
-                            break;
+                        //读取数量
+                        if (i==3) {
+                            if (check(arr[3]))
+                            {
+                                MatchCollection sz = Regex.Matches(arr[3], @"\d+");
+                                foreach (Match m in sz)
+                                {
+                                    dr["count"] = m.Value;
+                                    break;
+                                }
+                            }
+                            else {
+                                richTextBox.AppendText("（错误）：备注【" + name + "】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                continue;
+                            }
+
                         }
+
         
                     }
 
@@ -113,25 +137,20 @@ namespace ExportApp
 
                 }
 
-
-                //1.创建空列
-                /* DataColumn dc = new DataColumn();
-                 dt.Columns.Add(dc);
-                 //1.创建空行
-                 DataRow dr = dt.NewRow();
-                 dt.Rows.Add(dr);*/
-                //2.创建空行
-                //  dt.Rows.Add();
-                //3.通过行框架创建并赋值
-                //dt.Rows.Add("张三", DateTime.Now);//Add里面参数的数据顺序要和dt中的列的顺序对应 
-                //4.通过复制dt2表的某一行来创建
-
-
-                /* String path = System.AppDomain.CurrentDomain.BaseDirectory;
-                  path = System.IO.Directory.GetCurrentDirectory();
-                  ExcelOp(path+"\\export.xls");*/
                 GenerateAttachment(dt);
             }
+        }
+
+        public bool check(string text)
+        {
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] >= 48 && text[i] <= 57)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         /// <summary>
         /// 生成附件（使用Microsoft.Office.Interop.Excel组件的方式）
@@ -164,7 +183,7 @@ namespace ExportApp
                 int rowCount = DT.Rows.Count;
                 if (rowCount < 1)//没有取到数据
                 {
-                    MessageBox.Show("没有数据导出，请稍后再试！", "提示");
+                    MessageBox.Show(this,"没有数据导出，请稍后再试！", "提示");
                     return;
                 }
   
@@ -220,7 +239,7 @@ namespace ExportApp
                 currentTime = System.DateTime.Now;
                 fileName = DateTime.Now.ToString("yyyy-MM-dd");
                 //判断文件的存在
-                savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + "蓝图广告清单" + fileName ;
+                savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + "岚图广告清单" + fileName ;
                 Boolean exist = false;
                 exist = System.IO.File.Exists(savePath + ".xls");
                 do
@@ -251,7 +270,7 @@ namespace ExportApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show("导出失败,"+ex.Message, "提示");
+                MessageBox.Show(this,"导出失败,"+ex.Message, "提示");
                 workbook.Close(false, strTempPath, System.Reflection.Missing.Value);
                 success = false;
                 WriteLog(ex);
@@ -337,6 +356,16 @@ namespace ExportApp
         private void buttonSet_Click(object sender, EventArgs e)
         {
             priceForm.ShowDialog();
+        }
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            label.Visible = true;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            label.Visible = false;
         }
     }
 }

@@ -49,14 +49,16 @@
             this.mLabel2 = new D.Forms.MLabel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this._weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._plateNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd2
             // 
             this.btnAdd2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd2.BackgroundImage")));
-            this.btnAdd2.Location = new System.Drawing.Point(214, 273);
+            this.btnAdd2.Location = new System.Drawing.Point(176, 238);
             this.btnAdd2.Name = "btnAdd2";
             this.btnAdd2.Size = new System.Drawing.Size(166, 39);
             this.btnAdd2.TabIndex = 1;
@@ -67,10 +69,10 @@
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtPrice.Location = new System.Drawing.Point(195, 187);
+            this.txtPrice.Location = new System.Drawing.Point(115, 155);
             this.txtPrice.Multiline = true;
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(221, 31);
+            this.txtPrice.Size = new System.Drawing.Size(369, 31);
             this.txtPrice.TabIndex = 26;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -87,8 +89,8 @@
             mBorder1.Type = D.Forms.BorderType.Dash;
             mBorder1.Width = 0;
             this.labPrice.Border = mBorder1;
-            this.labPrice.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labPrice.Location = new System.Drawing.Point(114, 191);
+            this.labPrice.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labPrice.Location = new System.Drawing.Point(34, 159);
             this.labPrice.Name = "labPrice";
             this.labPrice.Radius = 0;
             this.labPrice.RadiusMode = D.Forms.RadiusMode.None;
@@ -109,8 +111,8 @@
             mBorder2.Type = D.Forms.BorderType.Dash;
             mBorder2.Width = 0;
             this.mLabel1.Border = mBorder2;
-            this.mLabel1.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.mLabel1.Location = new System.Drawing.Point(114, 128);
+            this.mLabel1.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.mLabel1.Location = new System.Drawing.Point(34, 96);
             this.mLabel1.Name = "mLabel1";
             this.mLabel1.Radius = 0;
             this.mLabel1.RadiusMode = D.Forms.RadiusMode.None;
@@ -121,10 +123,10 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtName.Location = new System.Drawing.Point(195, 124);
+            this.txtName.Location = new System.Drawing.Point(115, 92);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(221, 31);
+            this.txtName.Size = new System.Drawing.Size(369, 31);
             this.txtName.TabIndex = 50;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -153,11 +155,9 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
             this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -174,12 +174,13 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._weight,
+            this.id,
             this._plateNumber});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
@@ -194,7 +195,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(56)))), ((int)(((byte)(78)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
@@ -202,12 +203,16 @@
             this.dataGridView.RowHeadersWidth = 50;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DimGray;
             this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(334, 368);
+            this.dataGridView.Size = new System.Drawing.Size(337, 368);
             this.dataGridView.TabIndex = 53;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellDoubleClick);
+            this.dataGridView.MouseLeave += new System.EventHandler(this.dataGridView_MouseLeave);
             // 
             // _weight
             // 
@@ -219,6 +224,14 @@
             this._weight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this._weight.Width = 234;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // _plateNumber
             // 
             this._plateNumber.DataPropertyName = "price";
@@ -227,11 +240,22 @@
             this._plateNumber.ReadOnly = true;
             this._plateNumber.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // label
+            // 
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.ForeColor = System.Drawing.Color.Red;
+            this.label.Location = new System.Drawing.Point(644, 414);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(81, 23);
+            this.label.TabIndex = 54;
+            this.label.Text = "双击删除";
+            this.label.Visible = false;
+            // 
             // Price
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::ExportApp.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             gradientColor1.FromColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             gradientColor1.GradientMode = D.Forms.GradientMode.Vertical;
@@ -272,15 +296,16 @@
             this.Caption.MinimizeBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.MinimizeBoxImage")));
             this.Caption.NormalBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalBoxImage")));
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
-            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 868, 40);
-            this.Caption.Size = new System.Drawing.Size(868, 40);
+            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 866, 40);
+            this.Caption.Size = new System.Drawing.Size(866, 40);
             this.Caption.Text = "";
             this.Caption.Visible = true;
-            this.Caption.Width = 868;
+            this.Caption.Width = 866;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Caption.X = 1;
             this.Caption.Y = 1;
-            this.ClientSize = new System.Drawing.Size(868, 433);
+            this.ClientSize = new System.Drawing.Size(866, 449);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.mLabel2);
             this.Controls.Add(this.mLabel1);
@@ -307,6 +332,8 @@
         private D.Forms.MLabel mLabel2;
         public System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn _weight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn _plateNumber;
+        private System.Windows.Forms.Label label;
     }
 }

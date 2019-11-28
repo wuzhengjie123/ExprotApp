@@ -39,6 +39,7 @@
             this.dataTable1 = new System.Data.DataTable();
             this.dataTable2 = new System.Data.DataTable();
             this.buttonSet = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
@@ -55,6 +56,8 @@
             this.button2.Text = "选择文件夹";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
             // richTextBox
             // 
@@ -96,11 +99,22 @@
             this.buttonSet.UseVisualStyleBackColor = true;
             this.buttonSet.Click += new System.EventHandler(this.buttonSet_Click);
             // 
+            // label
+            // 
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.ForeColor = System.Drawing.Color.Red;
+            this.label.Location = new System.Drawing.Point(95, 57);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(224, 23);
+            this.label.TabIndex = 3;
+            this.label.Text = "格式为【备注 尺寸-尺寸 材料 数量】";
+            this.label.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::ExportApp.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             gradientColor1.FromColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             gradientColor1.GradientMode = D.Forms.GradientMode.Vertical;
@@ -141,23 +155,25 @@
             this.Caption.MinimizeBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.MinimizeBoxImage")));
             this.Caption.NormalBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalBoxImage")));
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
-            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 659, 40);
-            this.Caption.Size = new System.Drawing.Size(659, 40);
-            this.Caption.Text = "蓝图广告";
+            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 664, 40);
+            this.Caption.Size = new System.Drawing.Size(664, 40);
+            this.Caption.Text = "岚图广告";
             this.Caption.Visible = true;
-            this.Caption.Width = 659;
+            this.Caption.Width = 664;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Caption.X = 1;
             this.Caption.Y = 1;
-            this.ClientSize = new System.Drawing.Size(659, 401);
+            this.ClientSize = new System.Drawing.Size(664, 419);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.buttonSet);
             this.Controls.Add(this.button2);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "蓝图广告";
+            this.Text = "岚图广告";
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
@@ -172,6 +188,7 @@
         private System.Data.DataTable dataTable1;
         private System.Data.DataTable dataTable2;
         private System.Windows.Forms.Button buttonSet;
+        private System.Windows.Forms.Label label;
     }
 }
 

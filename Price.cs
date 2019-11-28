@@ -26,27 +26,30 @@ namespace ExportApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text))
+
+            string name = txtName.Text.Trim();
+            string price = txtPrice.Text.Trim();
+            if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show("材料不能输入空");
+                MessageBox.Show(this,"材料不能输入空");
                 return;
             }
             Regex reg = new Regex("^(\\-|\\+)?\\d+(\\.\\d+)?$");
-            if (string.IsNullOrEmpty(txtPrice.Text))
+            if (string.IsNullOrEmpty(price))
             {
-                MessageBox.Show("价格不能输入空");
+                MessageBox.Show(this,"价格不能输入空");
                 return;
             }
-            if (!reg.IsMatch(txtPrice.Text))
+            if (!reg.IsMatch(price))
             {
-                MessageBox.Show("价格为整数或者小数");
+                MessageBox.Show(this,"价格为整数或者小数");
                 return;
             }
             SQLiteParameter[] nameSp = {
                 new SQLiteParameter("@name",DbType.String)
             };
             //查询材料是否重复
-            nameSp[0].Value = txtName.Text;
+            nameSp[0].Value = name;
 
             Int64 sameName = (Int64)SQLiteHelper.ExecuteScalar("select count(id) from Bs_Materials where name = @name", nameSp);
             if (sameName > 0)
@@ -61,16 +64,16 @@ namespace ExportApp
                          new SQLiteParameter("@name",DbType.String)
 
                     };
-                    updateSp[0].Value = txtPrice.Text;
-                    updateSp[1].Value = txtName.Text;
+                    updateSp[0].Value = price;
+                    updateSp[1].Value = name;
                     Int64 updateCount = SQLiteHelper.ExecuteNonQuery("update Bs_Materials set price = @price where name = @name", updateSp);
                     if (updateCount > 0)
                     {
-                        MessageBox.Show("更新成功！");
+                        MessageBox.Show(this,"更新成功！");
                     }
                     else
                     {
-                        MessageBox.Show("更新失败！");
+                        MessageBox.Show(this,"更新失败！");
                     }
                 }
                 else
@@ -88,18 +91,18 @@ namespace ExportApp
                   };
                 Int64 id = (Int64)SQLiteHelper.ExecuteScalar("select max(id) from Bs_Materials");
                 sp[0].Value = id + 1;
-                sp[1].Value = txtName.Text;
-                sp[2].Value = double.Parse(txtPrice.Text);
+                sp[1].Value = name;
+                sp[2].Value = double.Parse(price);
                 Int64 count = SQLiteHelper.ExecuteNonQuery("insert into Bs_Materials(id,name,price) values(@id,@name,@price)", sp);
                 if (count > 0)
                 {
-                    MessageBox.Show("添加成功！");
+                    MessageBox.Show(this,"添加成功！");
                     txtName.Text = "";
                     txtPrice.Text = "";
                 }
                 else
                 {
-                    MessageBox.Show("添加失败！");
+                    MessageBox.Show(this,"添加失败！");
                 }
             }
             selectDate();
@@ -127,5 +130,41 @@ namespace ExportApp
             return price;
         }
 
+        private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("是否确定删除？", "确认框", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                DataGridViewRow dgvr = dataGridView.CurrentRow;
+                String id = dgvr.Cells["id"].Value.ToString();// 你自己要获取的数据
+                SQLiteParameter[] sp ={
+                new SQLiteParameter("@id",DbType.Int32),
+                  };
+                sp[0].Value = Int64.Parse(id);
+                Int64 count = SQLiteHelper.ExecuteNonQuery("delete from Bs_Materials where id = @id", sp);
+                if (count > 0)
+                {
+                    MessageBox.Show(this, "删除成功！");
+                }
+                else
+                {
+                    MessageBox.Show(this, "删除失败！");
+                }
+                selectDate();
+            }
+            else {
+                return;
+            }
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            label.Visible = true;
+        }
+
+        private void dataGridView_MouseLeave(object sender, EventArgs e)
+        {
+            label.Visible = false;
+        }
     }
 }
