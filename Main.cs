@@ -39,6 +39,8 @@ namespace ExportApp
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            index = 5;
+            richTextBox.Clear();
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.Description = "请选择文件路径";
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -67,21 +69,35 @@ namespace ExportApp
 
                     //提取中文
                     MatchCollection zw = Regex.Matches(name, @"\D+");
-                    String[] arr = name.Split(' ');
                     dr["remark"] = name;
+                    name =  new Regex("[\\s]+").Replace(name, " ");
+                    String[] arr = name.Split(' ');
                     if (arr.Length < 4) {
                         MessageBox.Show(this,"文件【"+name+"】格式不对！格式为【备注 尺寸-尺寸 材料 数量】");
                         return;
                     }
+                    double length = 0;
+                    double width = 0;
+                    double goodsPrice = 0;
                     for (Int64 i = 0; i < arr.Length; i++) {
 
                         String size = arr[1];
-                        double length = 0;
-                        double width = 0;
+
                         if (i == 1) {
-                            if (size.Contains("-"))
+                            if (size.Contains("-") || size.Contains("x") || size.Contains("X"))
                             {
-                                String[] sizeArr = size.Split('-');
+                                String[] sizeArr = new String[3];
+                                if (size.Contains("-")) {
+                                    sizeArr = size.Split('-');
+                                }
+                                else if (size.Contains("x"))
+                                {
+                                    sizeArr = size.Split('x');
+                                } else if (size.Contains("X")) {
+                                    sizeArr = size.Split('X');
+                                }
+
+
                                 for (Int64 j = 0; j < sizeArr.Length; j++)
                                 {
                                     length = double.Parse(sizeArr[0]) / 100;
@@ -93,7 +109,10 @@ namespace ExportApp
                             }
                             else
                             {
-                                richTextBox.AppendText("（错误）：备注【" + name + "】尺寸格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                changBlack("（错误）：备注【");
+                                changRed(name);
+                                changBlack("】尺寸格式异常！！！" + DateTime.Now.ToString() + "\n");
+
                                 continue;
                             }
                         }
@@ -102,13 +121,18 @@ namespace ExportApp
                         //读取材料时
                         if (i == 2) {
                             dr["goods"] = arr[2];
-                            double goodsPrice = priceForm.getPrice(arr[2]);
+                             goodsPrice = priceForm.getPrice(arr[2]);
                             if (goodsPrice == 0)
                             {
-                                richTextBox.AppendText("警告：第【" + index + "】行价格异常！！！材料是：【" + arr[2] + "】" + DateTime.Now.ToString() + "\n");
+                                changBlack("警告：第【");
+                                changRed(index.ToString());
+                                changBlack("】行价格异常！！！材料是：【");
+                                changRed(arr[2]);
+                                changBlack("】" + DateTime.Now.ToString() + "\n");
+                                //richTextBox.AppendText("警告：第【" + index + "】行价格异常！！！材料是：【" + arr[2] + "】" + DateTime.Now.ToString() + "\n");
                             }
                             dr["price"] = goodsPrice;
-                            dr["sum"] = goodsPrice * length * width;
+
                         }
                         //读取数量
                         if (i==3) {
@@ -122,9 +146,59 @@ namespace ExportApp
                                 }
                             }
                             else {
-                                richTextBox.AppendText("（错误）：备注【" + name + "】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
-                                continue;
+                                if (arr[3].Contains("一"))
+                                {
+                                    dr["count"] = 1;
+                                }
+                                else if (arr[3].Contains("二") || arr[3].Contains("两"))
+                                {
+                                    dr["count"] = 2;
+                                }
+                                else if (arr[3].Contains("三"))
+                                {
+                                    dr["count"] = 3;
+
+                                }
+                                else if (arr[3].Contains("四"))
+                                {
+                                    dr["count"] = 4;
+                                }
+                                else if (arr[3].Contains("五"))
+                                {
+                                    dr["count"] = 5;
+                                }
+                                else if (arr[3].Contains("六"))
+                                {
+                                    dr["count"] = 6;
+                                }
+                                else if (arr[3].Contains("七"))
+                                {
+                                    dr["count"] = 7;
+                                }
+                                else if (arr[3].Contains("八"))
+                                {
+                                    dr["count"] = 8;
+                                }
+                                else if (arr[3].Contains("九"))
+                                {
+                                    dr["count"] = 9;
+
+                                }
+                                else if (arr[3].Contains("十"))
+                                {
+                                    dr["count"] = 10;
+
+                                }
+                                else {
+                                    changBlack("（错误）：备注【");
+                                    changRed(name);
+                                    changBlack("】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                    //richTextBox.AppendText("（错误）：备注【" + name + "】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                    dr["count"] = 0;
+                                }
+
                             }
+                            dr["sum"] = goodsPrice * length * width * double.Parse(dr["count"].ToString());
 
                         }
 
@@ -173,7 +247,7 @@ namespace ExportApp
                 workbooks = app.Workbooks;
                 workbook = workbooks.Add(strTempPath); //加载模板
                 sheets = workbook.Sheets;
-                worksheet = (Microsoft.Office.Interop.Excel._Worksheet)sheets.get_Item(1); //第一个工作薄。
+                worksheet = (Excel.Worksheet)sheets.get_Item(1); //第一个工作薄。
                 if (worksheet == null)//工作薄中没有工作表
                 {
                     return;
@@ -186,10 +260,13 @@ namespace ExportApp
                     MessageBox.Show(this,"没有数据导出，请稍后再试！", "提示");
                     return;
                 }
-  
-               /* progressBar.Visible = true;
-                progressBar.Value = 0;
-                progressBar.Maximum = rowCount;*/
+                //删除多余行数
+                if (rowCount < 1000) {
+                    deleteRows(worksheet, 4+rowCount, 1065);
+                }
+                /* progressBar.Visible = true;
+                 progressBar.Value = 0;
+                 progressBar.Maximum = rowCount;*/
                 //worksheet.Cells[3, 7] = "2222";
                 //2、写入数据，Excel索引从1开始
                 for (int i = 1; i <= rowCount; i++)
@@ -238,8 +315,12 @@ namespace ExportApp
                 System.DateTime currentTime = new System.DateTime();
                 currentTime = System.DateTime.Now;
                 fileName = DateTime.Now.ToString("yyyy-MM-dd");
+                String folderName = DateTime.Now.ToString("yyyy.MM");
+                //如果不存在就创建 dir 文件夹 
+                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\"+ folderName)) 
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\"+ folderName);
                 //判断文件的存在
-                savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + "岚图广告清单" + fileName ;
+                savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\"+ folderName+"\\一诺广告清单" + fileName ;
                 Boolean exist = false;
                 exist = System.IO.File.Exists(savePath + ".xls");
                 do
@@ -366,6 +447,33 @@ namespace ExportApp
         private void button2_MouseLeave(object sender, EventArgs e)
         {
             label.Visible = false;
+        }
+        //红色
+        private void changRed(string text) {
+            this.richTextBox.SelectionColor = System.Drawing.Color.Red;
+            this.richTextBox.AppendText(text);
+        }
+        //黑色
+        private void changBlack(string text)
+        {
+            this.richTextBox.SelectionColor = System.Drawing.Color.Black;
+            this.richTextBox.AppendText(text);
+        }
+        //删除多余行
+        private void deleteRows(Excel._Worksheet sheet, int rowStart , int rowEnd)
+        {
+            String fw = rowStart + ":" + rowEnd;
+            Excel.Range range = (Excel.Range)sheet.Rows[fw, Missing.Value];
+            //删除整行 1~10行
+            range.Delete(Excel.XlDirection.xlDown);
+        }
+        //添加多余行
+        private void insertRows(Excel._Worksheet sheet, int rowStart, int rowEnd)
+        {
+            String fw = rowStart + ":" + rowEnd;
+            Excel.Range range = (Excel.Range)sheet.Rows[fw, Missing.Value];
+            //添加整行 1~10行
+            range.Insert(Excel.XlDirection.xlDown);
         }
     }
 }
