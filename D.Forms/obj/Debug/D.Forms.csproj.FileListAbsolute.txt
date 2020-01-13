@@ -136,3 +136,5 @@ E:\workspace\ExprotApp\D.Forms\obj\Debug\D.Forms.csproj.CoreCompileInputs.cache
 E:\workspace\ExprotApp\D.Forms\obj\Debug\D.Forms.dll
 E:\workspace\ExprotApp\D.Forms\obj\Debug\D.Forms.pdb
 E:\workspace\ExprotApp\D.Forms\obj\Debug\D.Forms.csprojAssemblyReference.cache
+E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.csprojAssemblyReference.cache
+E:\workSpace\ExportApp\D.Forms\obj\Debug\D.Forms.csproj.CoreCompileInputs.cache

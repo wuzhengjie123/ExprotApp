@@ -40,3 +40,4 @@ E:\workspace\ExprotApp\obj\Debug\ExportApp.csproj.CoreCompileInputs.cache
 E:\workspace\ExprotApp\obj\Debug\ExportApp.csproj.CopyComplete
 E:\workspace\ExprotApp\obj\Debug\ExportApp.exe
 E:\workspace\ExprotApp\obj\Debug\ExportApp.pdb
+E:\workSpace\ExportApp\obj\Debug\ExportApp.csproj.CoreCompileInputs.cache

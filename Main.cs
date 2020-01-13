@@ -39,7 +39,6 @@ namespace ExportApp
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            index = 5;
             richTextBox.Clear();
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.Description = "请选择文件路径";
@@ -47,172 +46,72 @@ namespace ExportApp
             {
                 String savePath = dialog.SelectedPath;
                 DirectoryInfo folder = new DirectoryInfo(savePath);
+                getPath(folder);
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("date", typeof(string)); //数据类型为 文本
-                dt.Columns.Add("remark", typeof(string)); //数据类型为 文本
-                dt.Columns.Add("length", typeof(double)); //数据类型为 double
-                dt.Columns.Add("width", typeof(double)); //数据类型为 double
-                dt.Columns.Add("goods", typeof(string)); //数据类型为 文本
-                dt.Columns.Add("count", typeof(Int64)); //数据类型为 int
-                dt.Columns.Add("size", typeof(double)); //数据类型为 文本
-                dt.Columns.Add("price", typeof(double)); //数据类型为 double
-                dt.Columns.Add("sum", typeof(double)); //数据类型为 double
-                foreach (FileInfo file in folder.GetFiles("*.*"))
+
+                DirectoryInfo[] dii = folder.GetDirectories();
+
+                //获取子文件夹内的文件列表，递归遍历
+                foreach (DirectoryInfo d in dii)
                 {
-                    // String name = file.Name.IndexOf(".");
-                    String name = System.IO.Path.GetFileNameWithoutExtension(file.Name);
-                    DataRow dr = dt.NewRow();
-                    //添加时间列的值
-                    dr["date"] = DateTime.Now.ToString("MM.dd"); 
-                    
+                    getPath(d);
+                }
+            }
+        }
+        //循环遍历出文件
+        public void getPath(DirectoryInfo folder) {
+            DirectoryInfo[] dii = folder.GetDirectories();
+            if(dii.Length > 0) {
+                //获取子文件夹内的文件列表，递归遍历
+                foreach (DirectoryInfo d in dii)
+                {
+                    getPath(d);
+                }
+            }
 
-                    //提取中文
-                    MatchCollection zw = Regex.Matches(name, @"\D+");
-                    dr["remark"] = name;
-                    name =  new Regex("[\\s]+").Replace(name, " ");
-                    String[] arr = name.Split(' ');
-                    if (arr.Length < 4) {
-                        MessageBox.Show(this,"文件【"+name+"】格式不对！格式为【备注 尺寸-尺寸 材料 数量】");
-                        return;
-                    }
-                    double length = 0;
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("date", typeof(string)); //数据类型为 文本
+            dt.Columns.Add("remark", typeof(string)); //数据类型为 文本
+            dt.Columns.Add("length", typeof(double)); //数据类型为 double
+            dt.Columns.Add("width", typeof(double)); //数据类型为 double
+            dt.Columns.Add("goods", typeof(string)); //数据类型为 文本
+            dt.Columns.Add("count", typeof(Int64)); //数据类型为 int
+            dt.Columns.Add("size", typeof(double)); //数据类型为 文本
+            dt.Columns.Add("price", typeof(double)); //数据类型为 double
+            dt.Columns.Add("sum", typeof(double)); //数据类型为 double
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                String fileName = System.IO.Path.GetFileNameWithoutExtension(file.Name);
+                for (int i = 0; i < fileName.Length; i++) {
+                    String str = fileName[i].ToString();
                     double width = 0;
-                    double goodsPrice = 0;
-                    for (Int64 i = 0; i < arr.Length; i++) {
-
-                        String size = arr[1];
-
-                        if (i == 1) {
-                            if (size.Contains("-") || size.Contains("x") || size.Contains("X"))
-                            {
-                                String[] sizeArr = new String[3];
-                                if (size.Contains("-")) {
-                                    sizeArr = size.Split('-');
-                                }
-                                else if (size.Contains("x"))
+                    double height = 0;
+                    if (str.Equals("-") || str.Equals("x") || str.Equals("X")) {
+                       String begin = fileName[i-1].ToString();
+                       String end = fileName[i+1].ToString();
+                        if (Regex.IsMatch(begin, @"^[+-]?\d*[.]?\d*$") && Regex.IsMatch(end, @"^[+-]?\d*[.]?\d*$")) {
+                            for (int j = 2; j<= 5;j++) {
+                                String k = fileName[i - j].ToString();
+                                if (Regex.IsMatch(k, @"^[+-]?\d*[.]?\d*$"))
                                 {
-                                    sizeArr = size.Split('x');
-                                } else if (size.Contains("X")) {
-                                    sizeArr = size.Split('X');
-                                }
-
-
-                                for (Int64 j = 0; j < sizeArr.Length; j++)
-                                {
-                                    length = double.Parse(sizeArr[0]) / 100;
-                                    width = double.Parse(sizeArr[1]) / 100;
-                                    dr["length"] = length;
-                                    dr["width"] = width;
-                                    dr["size"] = length * width;
-                                }
-                            }
-                            else
-                            {
-                                changBlack("（错误）：备注【");
-                                changRed(name);
-                                changBlack("】尺寸格式异常！！！" + DateTime.Now.ToString() + "\n");
-
-                                continue;
-                            }
-                        }
-
-
-                        //读取材料时
-                        if (i == 2) {
-                            dr["goods"] = arr[2];
-                             goodsPrice = priceForm.getPrice(arr[2]);
-                            if (goodsPrice == 0)
-                            {
-                                changBlack("警告：第【");
-                                changRed(index.ToString());
-                                changBlack("】行价格异常！！！材料是：【");
-                                changRed(arr[2]);
-                                changBlack("】" + DateTime.Now.ToString() + "\n");
-                                //richTextBox.AppendText("警告：第【" + index + "】行价格异常！！！材料是：【" + arr[2] + "】" + DateTime.Now.ToString() + "\n");
-                            }
-                            dr["price"] = goodsPrice;
-
-                        }
-                        //读取数量
-                        if (i==3) {
-                            if (check(arr[3]))
-                            {
-                                MatchCollection sz = Regex.Matches(arr[3], @"\d+");
-                                foreach (Match m in sz)
-                                {
-                                    dr["count"] = m.Value;
-                                    break;
-                                }
-                            }
-                            else {
-                                if (arr[3].Contains("一"))
-                                {
-                                    dr["count"] = 1;
-                                }
-                                else if (arr[3].Contains("二") || arr[3].Contains("两"))
-                                {
-                                    dr["count"] = 2;
-                                }
-                                else if (arr[3].Contains("三"))
-                                {
-                                    dr["count"] = 3;
-
-                                }
-                                else if (arr[3].Contains("四"))
-                                {
-                                    dr["count"] = 4;
-                                }
-                                else if (arr[3].Contains("五"))
-                                {
-                                    dr["count"] = 5;
-                                }
-                                else if (arr[3].Contains("六"))
-                                {
-                                    dr["count"] = 6;
-                                }
-                                else if (arr[3].Contains("七"))
-                                {
-                                    dr["count"] = 7;
-                                }
-                                else if (arr[3].Contains("八"))
-                                {
-                                    dr["count"] = 8;
-                                }
-                                else if (arr[3].Contains("九"))
-                                {
-                                    dr["count"] = 9;
-
-                                }
-                                else if (arr[3].Contains("十"))
-                                {
-                                    dr["count"] = 10;
-
+                                    width = int.Parse(k) * (j - 1) * 10 + int.Parse(begin);
                                 }
                                 else {
-                                    changBlack("（错误）：备注【");
-                                    changRed(name);
-                                    changBlack("】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
-                                    //richTextBox.AppendText("（错误）：备注【" + name + "】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
-                                    dr["count"] = 0;
+                                    break;
                                 }
-
+                               
                             }
-                            dr["sum"] = goodsPrice * length * width * double.Parse(dr["count"].ToString());
 
+
+                            changBlack(begin+"    "+str + "     "+end);
                         }
-
-        
+                       
                     }
 
-                    dt.Rows.Add(dr);
-
-                    index++;
-
                 }
-
-                GenerateAttachment(dt);
             }
+
         }
 
         public bool check(string text)
@@ -474,6 +373,193 @@ namespace ExportApp
             Excel.Range range = (Excel.Range)sheet.Rows[fw, Missing.Value];
             //添加整行 1~10行
             range.Insert(Excel.XlDirection.xlDown);
+        }
+        //测试
+        public void test() {
+            index = 5;
+            richTextBox.Clear();
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                String savePath = dialog.SelectedPath;
+                DirectoryInfo folder = new DirectoryInfo(savePath);
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("date", typeof(string)); //数据类型为 文本
+                dt.Columns.Add("remark", typeof(string)); //数据类型为 文本
+                dt.Columns.Add("length", typeof(double)); //数据类型为 double
+                dt.Columns.Add("width", typeof(double)); //数据类型为 double
+                dt.Columns.Add("goods", typeof(string)); //数据类型为 文本
+                dt.Columns.Add("count", typeof(Int64)); //数据类型为 int
+                dt.Columns.Add("size", typeof(double)); //数据类型为 文本
+                dt.Columns.Add("price", typeof(double)); //数据类型为 double
+                dt.Columns.Add("sum", typeof(double)); //数据类型为 double
+                foreach (FileInfo file in folder.GetFiles("*.*"))
+                {
+                    // String name = file.Name.IndexOf(".");
+                    String name = System.IO.Path.GetFileNameWithoutExtension(file.Name);
+                    DataRow dr = dt.NewRow();
+                    //添加时间列的值
+                    dr["date"] = DateTime.Now.ToString("MM.dd");
+
+
+                    //提取中文
+                    MatchCollection zw = Regex.Matches(name, @"\D+");
+                    dr["remark"] = name;
+                    name = new Regex("[\\s]+").Replace(name, " ");
+                    String[] arr = name.Split(' ');
+                    if (arr.Length < 4)
+                    {
+                        MessageBox.Show(this, "文件【" + name + "】格式不对！格式为【备注 尺寸-尺寸 材料 数量】");
+                        return;
+                    }
+                    double length = 0;
+                    double width = 0;
+                    double goodsPrice = 0;
+                    for (Int64 i = 0; i < arr.Length; i++)
+                    {
+
+                        String size = arr[1];
+
+                        if (i == 1)
+                        {
+                            if (size.Contains("-") || size.Contains("x") || size.Contains("X"))
+                            {
+                                String[] sizeArr = new String[3];
+                                if (size.Contains("-"))
+                                {
+                                    sizeArr = size.Split('-');
+                                }
+                                else if (size.Contains("x"))
+                                {
+                                    sizeArr = size.Split('x');
+                                }
+                                else if (size.Contains("X"))
+                                {
+                                    sizeArr = size.Split('X');
+                                }
+
+
+                                for (Int64 j = 0; j < sizeArr.Length; j++)
+                                {
+                                    length = double.Parse(sizeArr[0]) / 100;
+                                    width = double.Parse(sizeArr[1]) / 100;
+                                    dr["length"] = length;
+                                    dr["width"] = width;
+                                    dr["size"] = length * width;
+                                }
+                            }
+                            else
+                            {
+                                changBlack("（错误）：备注【");
+                                changRed(name);
+                                changBlack("】尺寸格式异常！！！" + DateTime.Now.ToString() + "\n");
+
+                                continue;
+                            }
+                        }
+
+
+                        //读取材料时
+                        if (i == 2)
+                        {
+                            dr["goods"] = arr[2];
+                            goodsPrice = priceForm.getPrice(arr[2]);
+                            if (goodsPrice == 0)
+                            {
+                                changBlack("警告：第【");
+                                changRed(index.ToString());
+                                changBlack("】行价格异常！！！材料是：【");
+                                changRed(arr[2]);
+                                changBlack("】" + DateTime.Now.ToString() + "\n");
+                                //richTextBox.AppendText("警告：第【" + index + "】行价格异常！！！材料是：【" + arr[2] + "】" + DateTime.Now.ToString() + "\n");
+                            }
+                            dr["price"] = goodsPrice;
+
+                        }
+                        //读取数量
+                        if (i == 3)
+                        {
+                            if (check(arr[3]))
+                            {
+                                MatchCollection sz = Regex.Matches(arr[3], @"\d+");
+                                foreach (Match m in sz)
+                                {
+                                    dr["count"] = m.Value;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                if (arr[3].Contains("一"))
+                                {
+                                    dr["count"] = 1;
+                                }
+                                else if (arr[3].Contains("二") || arr[3].Contains("两"))
+                                {
+                                    dr["count"] = 2;
+                                }
+                                else if (arr[3].Contains("三"))
+                                {
+                                    dr["count"] = 3;
+
+                                }
+                                else if (arr[3].Contains("四"))
+                                {
+                                    dr["count"] = 4;
+                                }
+                                else if (arr[3].Contains("五"))
+                                {
+                                    dr["count"] = 5;
+                                }
+                                else if (arr[3].Contains("六"))
+                                {
+                                    dr["count"] = 6;
+                                }
+                                else if (arr[3].Contains("七"))
+                                {
+                                    dr["count"] = 7;
+                                }
+                                else if (arr[3].Contains("八"))
+                                {
+                                    dr["count"] = 8;
+                                }
+                                else if (arr[3].Contains("九"))
+                                {
+                                    dr["count"] = 9;
+
+                                }
+                                else if (arr[3].Contains("十"))
+                                {
+                                    dr["count"] = 10;
+
+                                }
+                                else
+                                {
+                                    changBlack("（错误）：备注【");
+                                    changRed(name);
+                                    changBlack("】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                    //richTextBox.AppendText("（错误）：备注【" + name + "】数量格式异常！！！" + DateTime.Now.ToString() + "\n");
+                                    dr["count"] = 0;
+                                }
+
+                            }
+                            dr["sum"] = goodsPrice * length * width * double.Parse(dr["count"].ToString());
+
+                        }
+
+
+                    }
+
+                    dt.Rows.Add(dr);
+
+                    index++;
+
+                }
+
+                GenerateAttachment(dt);
+            }
         }
     }
 }
