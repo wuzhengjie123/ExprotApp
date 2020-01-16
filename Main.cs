@@ -39,6 +39,7 @@ namespace ExportApp
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            index = 5;
             richTextBox.Clear();
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.Description = "请选择文件路径";
@@ -46,68 +47,199 @@ namespace ExportApp
             {
                 String savePath = dialog.SelectedPath;
                 DirectoryInfo folder = new DirectoryInfo(savePath);
-                getPath(folder);
+                DataTable dt = new DataTable();
+                dt.Columns.Add("date", typeof(string)); //数据类型为 文本
+                dt.Columns.Add("remark", typeof(string)); //数据类型为 文本
+                dt.Columns.Add("width", typeof(double)); //数据类型为 double
+                dt.Columns.Add("height", typeof(double)); //数据类型为 double
+                dt.Columns.Add("goods", typeof(string)); //数据类型为 文本
+                dt.Columns.Add("count", typeof(Int64)); //数据类型为 int
+                dt.Columns.Add("size", typeof(double)); //数据类型为 文本
+                dt.Columns.Add("price", typeof(double)); //数据类型为 double
+                dt.Columns.Add("sum", typeof(double)); //数据类型为 double
+                getPath(folder,dt);
 
-
-                DirectoryInfo[] dii = folder.GetDirectories();
-
-                //获取子文件夹内的文件列表，递归遍历
-                foreach (DirectoryInfo d in dii)
-                {
-                    getPath(d);
-                }
+                GenerateAttachment(dt);
             }
         }
         //循环遍历出文件
-        public void getPath(DirectoryInfo folder) {
+        public void getPath(DirectoryInfo folder, DataTable dt) {
             DirectoryInfo[] dii = folder.GetDirectories();
-            if(dii.Length > 0) {
+            if (dii.Length > 0) {
                 //获取子文件夹内的文件列表，递归遍历
                 foreach (DirectoryInfo d in dii)
                 {
-                    getPath(d);
+                    getPath(d,dt);
                 }
             }
 
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("date", typeof(string)); //数据类型为 文本
-            dt.Columns.Add("remark", typeof(string)); //数据类型为 文本
-            dt.Columns.Add("length", typeof(double)); //数据类型为 double
-            dt.Columns.Add("width", typeof(double)); //数据类型为 double
-            dt.Columns.Add("goods", typeof(string)); //数据类型为 文本
-            dt.Columns.Add("count", typeof(Int64)); //数据类型为 int
-            dt.Columns.Add("size", typeof(double)); //数据类型为 文本
-            dt.Columns.Add("price", typeof(double)); //数据类型为 double
-            dt.Columns.Add("sum", typeof(double)); //数据类型为 double
-            foreach (FileInfo file in folder.GetFiles("*.*"))
+            if (folder.Exists)
             {
-                String fileName = System.IO.Path.GetFileNameWithoutExtension(file.Name);
-                for (int i = 0; i < fileName.Length; i++) {
-                    String str = fileName[i].ToString();
-                    double width = 0;
-                    double height = 0;
-                    if (str.Equals("-") || str.Equals("x") || str.Equals("X")) {
-                       String begin = fileName[i-1].ToString();
-                       String end = fileName[i+1].ToString();
-                        if (Regex.IsMatch(begin, @"^[+-]?\d*[.]?\d*$") && Regex.IsMatch(end, @"^[+-]?\d*[.]?\d*$")) {
-                            for (int j = 2; j<= 5;j++) {
-                                String k = fileName[i - j].ToString();
-                                if (Regex.IsMatch(k, @"^[+-]?\d*[.]?\d*$"))
-                                {
-                                    width = int.Parse(k) * (j - 1) * 10 + int.Parse(begin);
-                                }
-                                else {
-                                    break;
-                                }
-                               
-                            }
+                FileInfo[] files = folder.GetFiles();
+                // 文件名的升序
+                Array.Sort(files, new FileNameSort());
+
+                foreach (FileInfo file in files)
+                {
+                    DataRow dr = dt.NewRow();
+                    //添加时间列的值
+                    dr["date"] = DateTime.Now.ToString("MM.dd");
 
 
-                            changBlack(begin+"    "+str + "     "+end);
+
+                    String fileName = System.IO.Path.GetFileNameWithoutExtension(file.Name);
+                    dr["remark"] = fileName;
+                    double width =0;//宽
+                    double height = 0;//高
+                    int count = 1;//数量
+                    double size = 0;//大小尺寸
+                  
+                    if (fileName.Contains("-") && !fileName.Contains("x") && !fileName.Contains("X"))
+                    {
+                        Regex r = new Regex(@"(\d+\.?\d*)(?:\-)(\d+\.?\d*)");
+                        var matches = r.Matches(fileName).OfType<Match>().ToArray();
+                        if (matches.Length > 0)
+                        {
+                            width = double.Parse(matches[0].Groups[1].Value);
+                            height  = double.Parse(matches[0].Groups[2].Value);
                         }
-                       
+                        else
+                        {
+                            changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                        }
+
                     }
+                    else if (fileName.Contains("x"))
+                    {
+                        Regex r = new Regex(@"(\d+\.?\d*)(?:x)(\d+\.?\d*)");
+                        var matches = r.Matches(fileName).OfType<Match>().ToArray();
+                        if (matches.Length > 0)
+                        {
+                            width = double.Parse(matches[0].Groups[1].Value);
+                            height = double.Parse(matches[0].Groups[2].Value);
+                        }
+                        else
+                        {
+                            changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                        }
+                    }
+                    else if (fileName.Contains("X"))
+                    {
+                        Regex r = new Regex(@"(\d+\.?\d*)(?:X)(\d+\.?\d*)");
+                        var matches = r.Matches(fileName).OfType<Match>().ToArray();
+                        if (matches.Length > 0)
+                        {
+                            width = double.Parse(matches[0].Groups[1].Value);
+                            height = double.Parse(matches[0].Groups[2].Value);
+                        }
+                        else
+                        {
+                            changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                        }
+                    }
+                    else {
+                        changRed("第"+index + "行-------------"+fileName + "--------------------------------文件特殊\n");
+                    }
+
+                    if (fileName.Contains("张"))
+                    {
+                        int index = fileName.LastIndexOf("张");
+                        String arrStr = fileName.Substring(0, index);
+                        Regex reg = new Regex(@"[0-9]+");//2秒后超时
+                        MatchCollection mc = reg.Matches(arrStr);//设定要查找的字符串
+                        string s = mc[mc.Count - 1].Groups[0].Value;
+                        count = int.Parse(s);
+                    }
+                    else {
+                        count = 1;
+                    }
+                    //遍历出符合的材料
+
+                    string goods = "";//材料名
+                    double price = 0;//价格
+                    double sum = 0;//合计金额
+                    List<String> goodsList = new List<String>();//所有材料集合
+                    List<String> goodsPpList = new List<String>();//匹配对的材料
+                    DataGridView view = priceForm.dataGridView;
+                    for (int i = 0; i < view.RowCount; i++)
+                    {
+
+                        //打印第i行第j列数据
+                        goodsList.Add(Convert.ToString(view.Rows[i].Cells[1].Value));
+                    }
+                   foreach(String str in goodsList)
+                    {
+                        if (fileName.Contains(str))
+                        {
+                            //goods = str;
+                            goodsPpList.Add(str);
+                        }
+                    
+
+                    }
+
+                   //匹配出匹配度最高的材料
+                    if (goodsPpList.Count == 1) {
+                        goods = goodsPpList.First();
+                    }
+                    else if (goodsPpList.Count > 1)
+                    {
+                        decimal b = 0;
+                        foreach (String str in goodsPpList) {
+                            decimal a = GetSimilarityWith(fileName, str);
+                            if (a > b) {
+                                b = a;
+                                goods = str;
+                            }
+                        }
+                    }
+                    else {
+                        goods = "";
+                    }
+
+
+
+                    if (goods.Equals("")) {
+                        changRed("第" + index + "行【" + fileName + "】材料未找到，请添加！！！\n");
+                    }
+                    //单位判断
+                    if (fileName.Contains("mm") || fileName.Contains("MM"))
+                    {
+                        width = width / 1000;
+                        height = height / 1000;
+                    }
+                    if (fileName.Contains("m") && System.Text.RegularExpressions.Regex.Matches(fileName, "m").Count == 1)
+                    {
+                        width = width;
+                        height = height;
+                    } else if (fileName.Contains("米")) {
+                        width = width;
+                        height = height;            
+                    }
+                    else {
+
+                        width = width / 100;
+                        height = height / 100;
+                    }
+
+                    size = width * height;
+
+                    price =  priceForm.getPrice(goods);
+
+                    sum = width * height * price * count;
+                
+                    dr["count"] = count;
+                    dr["price"] = price;
+                    dr["count"] = count;
+                    dr["width"] = width;
+                    dr["height"] = height;
+                    dr["goods"] = goods;
+                    dr["sum"] = sum;
+                    dr["size"] = size;
+                    dt.Rows.Add(dr);
+
+                    index++;
 
                 }
             }
@@ -176,8 +308,8 @@ namespace ExportApp
                     worksheet.Cells[row_, 1] = DT.Rows[dt_row]["date"].ToString();
                     worksheet.Cells[row_, 2] = DT.Rows[dt_row]["remark"].ToString();
                     worksheet.Cells[row_, 3] = DT.Rows[dt_row]["goods"].ToString();
-                    worksheet.Cells[row_, 4] = DT.Rows[dt_row]["length"];
-                    worksheet.Cells[row_, 5] = DT.Rows[dt_row]["width"];
+                    worksheet.Cells[row_, 4] = DT.Rows[dt_row]["width"];
+                    worksheet.Cells[row_, 5] = DT.Rows[dt_row]["height"];
                     worksheet.Cells[row_, 6] = DT.Rows[dt_row]["count"];
                     worksheet.Cells[row_, 7] = DT.Rows[dt_row]["size"];
                     worksheet.Cells[row_, 8] = DT.Rows[dt_row]["price"];
@@ -338,15 +470,6 @@ namespace ExportApp
             priceForm.ShowDialog();
         }
 
-        private void button2_MouseEnter(object sender, EventArgs e)
-        {
-            label.Visible = true;
-        }
-
-        private void button2_MouseLeave(object sender, EventArgs e)
-        {
-            label.Visible = false;
-        }
         //红色
         private void changRed(string text) {
             this.richTextBox.SelectionColor = System.Drawing.Color.Red;
@@ -374,6 +497,33 @@ namespace ExportApp
             //添加整行 1~10行
             range.Insert(Excel.XlDirection.xlDown);
         }
+        /// <summary>
+        /// 获取两个字符串的相似度
+        /// </summary>
+        /// <param name=”sourceString”>第一个字符串</param>
+        /// <param name=”str”>第二个字符串</param>
+        /// <returns></returns>
+        public static decimal GetSimilarityWith(string sourceString, string str)
+        {
+
+            decimal Kq = 2;
+            decimal Kr = 1;
+            decimal Ks = 1;
+
+            char[] ss = sourceString.ToCharArray();
+            char[] st = str.ToCharArray();
+
+            //获取交集数量
+            int q = ss.Intersect(st).Count();
+            int s = ss.Length - q;
+            int r = st.Length - q;
+
+            return Kq * q / (Kq * q + Kr * r + Ks * s);
+        }
+
+
+
+
         //测试
         public void test() {
             index = 5;

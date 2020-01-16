@@ -39,7 +39,6 @@
             this.dataTable1 = new System.Data.DataTable();
             this.dataTable2 = new System.Data.DataTable();
             this.buttonSet = new System.Windows.Forms.Button();
-            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
@@ -49,15 +48,13 @@
             // 
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(198, 85);
+            this.button2.Location = new System.Drawing.Point(322, 75);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(209, 53);
             this.button2.TabIndex = 1;
             this.button2.Text = "选择文件夹";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
             // richTextBox
             // 
@@ -65,9 +62,9 @@
             this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox.Font = new System.Drawing.Font("新宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.richTextBox.ForeColor = System.Drawing.Color.Black;
-            this.richTextBox.Location = new System.Drawing.Point(150, 161);
+            this.richTextBox.Location = new System.Drawing.Point(198, 158);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(648, 236);
+            this.richTextBox.Size = new System.Drawing.Size(832, 342);
             this.richTextBox.TabIndex = 2;
             this.richTextBox.Text = "";
             this.richTextBox.TextChanged += new System.EventHandler(this.richTextBox_TextChanged);
@@ -91,24 +88,13 @@
             // 
             this.buttonSet.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSet.BackgroundImage")));
             this.buttonSet.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonSet.Location = new System.Drawing.Point(528, 85);
+            this.buttonSet.Location = new System.Drawing.Point(652, 75);
             this.buttonSet.Name = "buttonSet";
             this.buttonSet.Size = new System.Drawing.Size(209, 53);
             this.buttonSet.TabIndex = 1;
             this.buttonSet.Text = "设置";
             this.buttonSet.UseVisualStyleBackColor = true;
             this.buttonSet.Click += new System.EventHandler(this.buttonSet_Click);
-            // 
-            // label
-            // 
-            this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.ForeColor = System.Drawing.Color.Red;
-            this.label.Location = new System.Drawing.Point(201, 59);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(224, 23);
-            this.label.TabIndex = 3;
-            this.label.Text = "格式为【备注 尺寸-尺寸 材料 数量】";
-            this.label.Visible = false;
             // 
             // Main
             // 
@@ -155,16 +141,15 @@
             this.Caption.MinimizeBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.MinimizeBoxImage")));
             this.Caption.NormalBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalBoxImage")));
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
-            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 816, 40);
-            this.Caption.Size = new System.Drawing.Size(816, 40);
+            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 1071, 40);
+            this.Caption.Size = new System.Drawing.Size(1071, 40);
             this.Caption.Text = "一诺广告";
             this.Caption.Visible = true;
-            this.Caption.Width = 816;
+            this.Caption.Width = 1071;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Caption.X = 1;
             this.Caption.Y = 1;
-            this.ClientSize = new System.Drawing.Size(816, 419);
-            this.Controls.Add(this.label);
+            this.ClientSize = new System.Drawing.Size(1071, 532);
             this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.buttonSet);
             this.Controls.Add(this.button2);
@@ -188,7 +173,6 @@
         private System.Data.DataTable dataTable1;
         private System.Data.DataTable dataTable2;
         private System.Windows.Forms.Button buttonSet;
-        private System.Windows.Forms.Label label;
     }
 }
 

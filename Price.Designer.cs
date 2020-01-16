@@ -48,10 +48,11 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.mLabel2 = new D.Forms.MLabel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this._weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._plateNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,7 +158,7 @@
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
             this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -180,13 +181,13 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView.Location = new System.Drawing.Point(513, 43);
+            this.dataGridView.Location = new System.Drawing.Point(606, 52);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
@@ -203,16 +204,38 @@
             this.dataGridView.RowHeadersWidth = 50;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
             this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(337, 368);
+            this.dataGridView.Size = new System.Drawing.Size(404, 436);
             this.dataGridView.TabIndex = 53;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellDoubleClick);
             this.dataGridView.MouseLeave += new System.EventHandler(this.dataGridView_MouseLeave);
+            // 
+            // label
+            // 
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.ForeColor = System.Drawing.Color.Red;
+            this.label.Location = new System.Drawing.Point(753, 507);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(81, 23);
+            this.label.TabIndex = 54;
+            this.label.Text = "双击删除";
+            this.label.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(113, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(384, 35);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "注意：材料名有区分大小写，括号也有区分是否是中英文的括号。";
             // 
             // _weight
             // 
@@ -222,7 +245,7 @@
             this._weight.ReadOnly = true;
             this._weight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this._weight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this._weight.Width = 234;
+            this._weight.Width = 300;
             // 
             // id
             // 
@@ -239,17 +262,6 @@
             this._plateNumber.Name = "_plateNumber";
             this._plateNumber.ReadOnly = true;
             this._plateNumber.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // label
-            // 
-            this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.ForeColor = System.Drawing.Color.Red;
-            this.label.Location = new System.Drawing.Point(644, 414);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(81, 23);
-            this.label.TabIndex = 54;
-            this.label.Text = "双击删除";
-            this.label.Visible = false;
             // 
             // Price
             // 
@@ -296,15 +308,16 @@
             this.Caption.MinimizeBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.MinimizeBoxImage")));
             this.Caption.NormalBoxImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalBoxImage")));
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
-            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 866, 40);
-            this.Caption.Size = new System.Drawing.Size(866, 40);
+            this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 1071, 40);
+            this.Caption.Size = new System.Drawing.Size(1071, 40);
             this.Caption.Text = "";
             this.Caption.Visible = true;
-            this.Caption.Width = 866;
+            this.Caption.Width = 1071;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Caption.X = 1;
             this.Caption.Y = 1;
-            this.ClientSize = new System.Drawing.Size(866, 449);
+            this.ClientSize = new System.Drawing.Size(1071, 531);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.mLabel2);
@@ -331,9 +344,10 @@
         private System.Windows.Forms.TextBox txtName;
         private D.Forms.MLabel mLabel2;
         public System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn _weight;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn _plateNumber;
-        private System.Windows.Forms.Label label;
     }
 }
