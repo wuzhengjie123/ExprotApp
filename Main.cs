@@ -94,6 +94,8 @@ namespace ExportApp
                     double height = 0;//高
                     int count = 1;//数量
                     double size = 0;//大小尺寸
+
+                    Boolean flag = false;
                   
                     if (fileName.Contains("-") && !fileName.Contains("x") && !fileName.Contains("X"))
                     {
@@ -112,48 +114,89 @@ namespace ExportApp
                     }
                     else if (fileName.Contains("x"))
                     {
-                        Regex r = new Regex(@"(\d+\.?\d*)(?:x)(\d+\.?\d*)");
-                        var matches = r.Matches(fileName).OfType<Match>().ToArray();
-                        if (matches.Length > 0)
+                        if (Regex.Matches(fileName, "x").Count > 1)
                         {
-                            width = double.Parse(matches[0].Groups[1].Value);
-                            height = double.Parse(matches[0].Groups[2].Value);
+                            Regex r1 = new Regex(@"(\d+\.?\d*)(?:x)(\d+\.?\d*)(?:x)(\d+\.?\d*)");
+                            var matches1 = r1.Matches(fileName).OfType<Match>().ToArray();
+                            if (matches1.Length > 0)
+                            {
+                                width = double.Parse(matches1[0].Groups[1].Value);
+                                height = double.Parse(matches1[0].Groups[2].Value);
+                                count = int.Parse(matches1[0].Groups[3].Value);
+                                flag = true;
+                            }
                         }
-                        else
-                        {
-                            changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                        else {
+                            Regex r = new Regex(@"(\d+\.?\d*)(?:x)(\d+\.?\d*)");
+                            var matches = r.Matches(fileName).OfType<Match>().ToArray();
+                            if (matches.Length > 0)
+                            {
+                                width = double.Parse(matches[0].Groups[1].Value);
+                                height = double.Parse(matches[0].Groups[2].Value);
+                            }
+                            else
+                            {
+                                changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                            }
                         }
+
+
                     }
                     else if (fileName.Contains("X"))
                     {
-                        Regex r = new Regex(@"(\d+\.?\d*)(?:X)(\d+\.?\d*)");
-                        var matches = r.Matches(fileName).OfType<Match>().ToArray();
-                        if (matches.Length > 0)
+                        if (Regex.Matches(fileName, "X").Count > 1)
                         {
-                            width = double.Parse(matches[0].Groups[1].Value);
-                            height = double.Parse(matches[0].Groups[2].Value);
+                            Regex r1 = new Regex(@"(\d+\.?\d*)(?:X)(\d+\.?\d*)(?:X)(\d+\.?\d*)");
+                            var matches1 = r1.Matches(fileName).OfType<Match>().ToArray();
+                            if (matches1.Length > 0)
+                            {
+                                width = double.Parse(matches1[0].Groups[1].Value);
+                                height = double.Parse(matches1[0].Groups[2].Value);
+                                count = int.Parse(matches1[0].Groups[3].Value);
+                                flag = true;
+                            }
                         }
-                        else
-                        {
-                            changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                        else {
+                            Regex r = new Regex(@"(\d+\.?\d*)(?:X)(\d+\.?\d*)");
+                            var matches = r.Matches(fileName).OfType<Match>().ToArray();
+                            if (matches.Length > 0)
+                            {
+                                width = double.Parse(matches[0].Groups[1].Value);
+                                height = double.Parse(matches[0].Groups[2].Value);
+                            }
+                            else
+                            {
+                                changRed("第" + index + "行-------------" + fileName + "--------------------------------文件特殊\n");
+                            }
+
                         }
+
                     }
                     else {
                         changRed("第"+index + "行-------------"+fileName + "--------------------------------文件特殊\n");
                     }
 
-                    if (fileName.Contains("张"))
+
+                    //如果不是带有数量的x
+                    if (!flag)
                     {
-                        int index = fileName.LastIndexOf("张");
-                        String arrStr = fileName.Substring(0, index);
-                        Regex reg = new Regex(@"[0-9]+");//2秒后超时
-                        MatchCollection mc = reg.Matches(arrStr);//设定要查找的字符串
-                        string s = mc[mc.Count - 1].Groups[0].Value;
-                        count = int.Parse(s);
+                        if (fileName.Contains("张"))
+                        {
+                            int index = fileName.LastIndexOf("张");
+                            String arrStr = fileName.Substring(0, index);
+                            Regex reg = new Regex(@"[0-9]+");//2秒后超时
+                            MatchCollection mc = reg.Matches(arrStr);//设定要查找的字符串
+                            string s = mc[mc.Count - 1].Groups[0].Value;
+                            count = int.Parse(s);
+                        }
+                        else
+                        {
+                            count = 1;
+
+                        }
+
                     }
-                    else {
-                        count = 1;
-                    }
+
                     //遍历出符合的材料
 
                     string goods = "";//材料名
@@ -208,8 +251,7 @@ namespace ExportApp
                     {
                         width = width / 1000;
                         height = height / 1000;
-                    }
-                    if (fileName.Contains("m") && System.Text.RegularExpressions.Regex.Matches(fileName, "m").Count == 1)
+                    }else if (fileName.Contains("m") && System.Text.RegularExpressions.Regex.Matches(fileName, "m").Count == 1)
                     {
                         width = width;
                         height = height;
