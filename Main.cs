@@ -11,6 +11,8 @@ using System.Windows;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using D.Forms;
+using System.Collections;
+using System.Drawing;
 
 namespace ExportApp
 {
@@ -28,9 +30,11 @@ namespace ExportApp
         private Int64 index = 5;
         private Int64 number = 1;
         private Price priceForm = new Price();
+        public static Main main = new Main();
         public Main()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            main = this;
             string cd = System.Environment.CurrentDirectory;
             //string pd = Directory.GetParent(Directory.GetParent(cd).FullName).FullName;
             cd += "\\export.db";
@@ -184,7 +188,15 @@ namespace ExportApp
                         {
                             int index = fileName.LastIndexOf("张");
                             String arrStr = fileName.Substring(0, index);
-                            Regex reg = new Regex(@"[0-9]+");//2秒后超时
+                            Regex reg = new Regex(@"[0-9]+");
+                            MatchCollection mc = reg.Matches(arrStr);//设定要查找的字符串
+                            string s = mc[mc.Count - 1].Groups[0].Value;
+                            count = int.Parse(s);
+                        }else if (fileName.Contains("条"))
+                        {
+                            int index = fileName.LastIndexOf("条");
+                            String arrStr = fileName.Substring(0, index);
+                            Regex reg = new Regex(@"[0-9]+");
                             MatchCollection mc = reg.Matches(arrStr);//设定要查找的字符串
                             string s = mc[mc.Count - 1].Groups[0].Value;
                             count = int.Parse(s);
@@ -752,6 +764,80 @@ namespace ExportApp
 
                 GenerateAttachment(dt);
             }
+        }
+
+        private void copyBtn_Click(object sender, EventArgs e)
+        {
+            //var test = new SFTPOperation("172.28.103.9", "22", "sftp02", "sftp02");
+           // var test = new SFTPOperation("192.144.233.135", "22", "root", "953615645@qq.com");
+            // 上传文件
+           // test.GetFileList("/root/ExportApp");
+
+           //  foreach (String o in list)
+            // {
+             //   if (File.Exists("C:/Program Files (x86)/测试/"+ o))
+             //   {
+              //      FileStream stream = File.Create("C:/Program Files (x86)/测试/12");
+              //      stream.Close();
+              //  }
+              //  test.Get("/root/ExportApp/"+ o, "C:/Program Files (x86)/测试/"+ o);
+
+            // }
+
+            //// 获取文件列表
+            //var list = test.GetFileList("china/in", "zip");
+            //foreach (var name in list)
+            //{
+            //    // 获取文件
+            //    test.Get("china/in/" , "D:/Download/ResourceSharp/" + name);
+            //    Console.WriteLine(name);
+            //}
+            //// 删除文件
+            //test.Delete("china/in/aaa.txt");
+            //// 移动文件
+            //test.Move("china/in/test.txt", "china/test.txt");
+        }
+
+        private void uploadBtn_MouseEnter(object sender, EventArgs e)
+        {
+            uploadBtn.BackColor = Color.Red; 
+        }
+
+        private void uploadBtn_MouseLeave(object sender, EventArgs e)
+        {
+            uploadBtn.BackColor = Color.Transparent;
+        }
+
+        private void uploadBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("是否确定更新？", "确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                //uploadBtn.Enabled = false;
+                this.Close();
+                string strPathExe = Environment.CurrentDirectory + "\\UpdateApp.exe";
+                Process process = new System.Diagnostics.Process();
+                process.StartInfo.FileName = strPathExe;
+                process.StartInfo.Arguments = null;//-s -t 可以用来关机、开机或重启
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.RedirectStandardInput = false;  //true
+                process.StartInfo.RedirectStandardOutput = false;  //true
+                process.StartInfo.RedirectStandardError = false;
+                process.StartInfo.CreateNoWindow = false;
+                process.Start();//启动
+                
+
+
+               
+
+            }
+            else
+            {     
+                //点取消的代码    
+                return;
+            }
+            uploadBtn.Enabled = true;
+
         }
     }
 }

@@ -39,6 +39,7 @@
             this.dataTable1 = new System.Data.DataTable();
             this.dataTable2 = new System.Data.DataTable();
             this.buttonSet = new System.Windows.Forms.Button();
+            this.uploadBtn = new D.Forms.MButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
@@ -96,6 +97,35 @@
             this.buttonSet.UseVisualStyleBackColor = true;
             this.buttonSet.Click += new System.EventHandler(this.buttonSet_Click);
             // 
+            // uploadBtn
+            // 
+            this.uploadBtn.BackColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.BackgroundColor.FromColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.BackgroundColor.GradientMode = D.Forms.GradientMode.Vertical;
+            this.uploadBtn.BackgroundColor.ToColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.BorderColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.BorderHoverColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.BorderPressColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.BorderWidth = 1;
+            this.uploadBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uploadBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.uploadBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.HoverBackColor.FromColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.HoverBackColor.GradientMode = D.Forms.GradientMode.None;
+            this.uploadBtn.HoverBackColor.ToColor = System.Drawing.Color.Transparent;
+            this.uploadBtn.Image = global::ExportApp.Properties.Resources.更新__3_;
+            this.uploadBtn.ImageSize = new System.Drawing.Size(35, 35);
+            this.uploadBtn.Location = new System.Drawing.Point(984, 4);
+            this.uploadBtn.Name = "uploadBtn";
+            this.uploadBtn.Radius = 0;
+            this.uploadBtn.RadiusMode = D.Forms.RadiusMode.None;
+            this.uploadBtn.Size = new System.Drawing.Size(26, 24);
+            this.uploadBtn.TabIndex = 4;
+            this.uploadBtn.TextImageRelation = D.Forms.ImageTextRelation.Overlay;
+            this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
+            this.uploadBtn.MouseEnter += new System.EventHandler(this.uploadBtn_MouseEnter);
+            this.uploadBtn.MouseLeave += new System.EventHandler(this.uploadBtn_MouseLeave);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -143,13 +173,14 @@
             this.Caption.Padding = new System.Windows.Forms.Padding(4);
             this.Caption.Rectangle = new System.Drawing.Rectangle(1, 1, 1071, 40);
             this.Caption.Size = new System.Drawing.Size(1071, 40);
-            this.Caption.Text = "一诺广告";
+            this.Caption.Text = "壹诺广告";
             this.Caption.Visible = true;
             this.Caption.Width = 1071;
             this.Caption.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Caption.X = 1;
             this.Caption.Y = 1;
             this.ClientSize = new System.Drawing.Size(1071, 532);
+            this.Controls.Add(this.uploadBtn);
             this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.buttonSet);
             this.Controls.Add(this.button2);
@@ -158,7 +189,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "一诺广告";
+            this.Text = "壹诺广告";
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
@@ -173,6 +204,7 @@
         private System.Data.DataTable dataTable1;
         private System.Data.DataTable dataTable2;
         private System.Windows.Forms.Button buttonSet;
+        private D.Forms.MButton uploadBtn;
     }
 }
 

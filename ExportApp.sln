@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportApp", "ExportApp.csproj", "{6DDD11A4-4BFE-4423-85A5-320AD26163E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{88D79D91-9050-456B-94B4-2FDA961FF5BB} = {88D79D91-9050-456B-94B4-2FDA961FF5BB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Forms", "D.Forms\D.Forms.csproj", "{5065D447-7EF0-440D-BBAA-E2C96ECFFF0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateApp", "UpdateApp\UpdateApp.csproj", "{88D79D91-9050-456B-94B4-2FDA961FF5BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{5065D447-7EF0-440D-BBAA-E2C96ECFFF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5065D447-7EF0-440D-BBAA-E2C96ECFFF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5065D447-7EF0-440D-BBAA-E2C96ECFFF0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D79D91-9050-456B-94B4-2FDA961FF5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D79D91-9050-456B-94B4-2FDA961FF5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D79D91-9050-456B-94B4-2FDA961FF5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D79D91-9050-456B-94B4-2FDA961FF5BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

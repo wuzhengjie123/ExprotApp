@@ -28,6 +28,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>bird.ico</ApplicationIcon>
@@ -66,6 +69,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>packages\SSH.NET.2016.1.0\lib\net35\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -164,11 +170,19 @@
       <Project>{5065d447-7ef0-440d-bbaa-e2c96ecfff0b}</Project>
       <Name>D.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="UpdateApp\UpdateApp.csproj">
+      <Project>{88d79d91-9050-456b-94b4-2fda961ff5bb}</Project>
+      <Name>UpdateApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bird.ico" />
     <Content Include="Resources\back.jpg" />
     <Content Include="Resources\timg.jpg" />
+    <None Include="Resources\更新 %283%29.png" />
+    <None Include="Resources\更新 %282%29.png" />
+    <None Include="Resources\更新 %281%29.png" />
+    <None Include="Resources\更新.png" />
     <None Include="Resources\bird.ico" />
   </ItemGroup>
   <ItemGroup>

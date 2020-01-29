@@ -30,7 +30,6 @@ E:\workspace\ExprotApp\bin\Debug\System.Data.SQLite.Linq.dll
 E:\workspace\ExprotApp\bin\Debug\D.Forms.pdb
 E:\workspace\ExprotApp\bin\Debug\System.Data.SQLite.xml
 E:\workspace\ExprotApp\bin\Debug\System.Data.SQLite.dll.config
-E:\workspace\ExprotApp\obj\Debug\ExportApp.csprojAssemblyReference.cache
 E:\workspace\ExprotApp\obj\Debug\ExportApp.csproj.ResolveComReference.cache
 E:\workspace\ExprotApp\obj\Debug\ExportApp.Main.resources
 E:\workspace\ExprotApp\obj\Debug\ExportApp.Price.resources
@@ -41,3 +40,10 @@ E:\workspace\ExprotApp\obj\Debug\ExportApp.csproj.CopyComplete
 E:\workspace\ExprotApp\obj\Debug\ExportApp.exe
 E:\workspace\ExprotApp\obj\Debug\ExportApp.pdb
 E:\workSpace\ExportApp\obj\Debug\ExportApp.csproj.CoreCompileInputs.cache
+E:\workspace\ExprotApp\bin\Debug\Interop.Office.dll
+E:\workspace\ExprotApp\obj\Debug\Interop.Office.dll
+E:\workspace\ExprotApp\bin\Debug\Renci.SshNet.dll
+E:\workspace\ExprotApp\bin\Debug\Renci.SshNet.xml
+E:\workspace\ExprotApp\obj\Debug\ExportApp.csprojAssemblyReference.cache
+E:\workspace\ExprotApp\bin\Debug\UpdateApp.exe
+E:\workspace\ExprotApp\bin\Debug\UpdateApp.pdb

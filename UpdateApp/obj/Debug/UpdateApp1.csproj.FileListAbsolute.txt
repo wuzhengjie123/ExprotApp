@@ -1,0 +1,14 @@
+E:\workspace\ExprotApp\UpdateApp1\bin\Debug\UpdateApp1.exe
+E:\workspace\ExprotApp\UpdateApp1\bin\Debug\UpdateApp1.pdb
+E:\workspace\ExprotApp\UpdateApp1\bin\Debug\D.Forms.dll
+E:\workspace\ExprotApp\UpdateApp1\bin\Debug\Renci.SshNet.dll
+E:\workspace\ExprotApp\UpdateApp1\bin\Debug\D.Forms.pdb
+E:\workspace\ExprotApp\UpdateApp1\bin\Debug\Renci.SshNet.xml
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.csprojAssemblyReference.cache
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.Properties.Resources.resources
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.Update1.resources
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.csproj.GenerateResource.cache
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.csproj.CoreCompileInputs.cache
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.csproj.CopyComplete
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.exe
+E:\workspace\ExprotApp\UpdateApp1\obj\Debug\UpdateApp1.pdb
